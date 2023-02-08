@@ -29,6 +29,7 @@ namespace PlayingCardGame.Utilities
             // 最多取52張牌
             if (countOfCard > deckOfCards.Count)countOfCard = deckOfCards.Count;
 
+            // todo 改成Shuffle() 然後 deckOfCards.Take(countOfCard)
             while (result.Count < countOfCard)
             {
                 Random seed = new Random(Guid.NewGuid().GetHashCode());
