@@ -82,17 +82,17 @@ namespace PlayingCardGame.Utilities
         /// </summary>
         public void Shuffle()
         {
-            int n = Cards.Count;
+            // todo 比較不同洗牌方式
+            List<Card> existingCards = this.Cards.Select(c => c).ToList();
+            this.Cards.Clear();
 
             Random seed = new Random(Guid.NewGuid().GetHashCode());
-            while (n > 0)
+            while (existingCards.Count > 0)
             {
-                n--;
-                int index = seed.Next(0, n);
+                int index = seed.Next(0, existingCards.Count); // [0, allCards.Count)
 
-                Card temp = Cards[n];
-                Cards[n] = Cards[index];
-                Cards[index] = temp;
+                this.Cards.Add(existingCards[index]);
+                existingCards.RemoveAt(index);
             }
         }
 
@@ -119,13 +119,12 @@ namespace PlayingCardGame.Utilities
         /// <returns></returns>
         public List<Card> Deal(int countOfDeal)
         {
-            // todo 改成從頭取 Cards.Take() Cards.RemoveRange(0, count)
             int count = Cards.Count;
             if (count - countOfDeal < 0) throw new Exception("Deck中的牌不足");
 
             Card[] nextCards = new Card[countOfDeal];
             Cards.CopyTo(count-countOfDeal, nextCards, 0, countOfDeal);
-            
+
             Cards.RemoveRange(count-countOfDeal, countOfDeal);
 
             return nextCards.ToList();
