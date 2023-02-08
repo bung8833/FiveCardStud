@@ -11,21 +11,11 @@ namespace PlayingCardGame.ConsoleApp
     {
         static void Main(string[] args)
         {
-            var deck1 = new Deck();
-            deck1.Shuffle();
+            List<int> list = new List<int>() { 1, 2, 2, 2, 2 };
 
-            List<Card> cards = new List<Card>();
+            int count = list.GroupBy(x => x).Count();
 
-            for (int i = 0; i < 10; i++)
-            {
-                cards = deck1.Deal(5);
-                cards.SoryByHighOrLow();
-                cards.ForEach(c => Console.Write(c + " "));
-                Console.WriteLine();
-            }
-
-
-
+            Console.WriteLine(count);
 
 
 
