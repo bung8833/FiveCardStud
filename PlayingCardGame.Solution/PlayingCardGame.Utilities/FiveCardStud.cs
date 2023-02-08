@@ -1,9 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace PlayingCardGame.Utilities
 {
@@ -148,7 +145,7 @@ namespace PlayingCardGame.Utilities
             if (Hand.Count != 5) return false;
 
             // 所有牌花色相同
-            bool flush = Hand.All(c => c.Suit == Hand[0].Suit);
+            bool flush = Hand.Select(h => h.Suit).Distinct().Count() == 1;
 
             return flush;
         }
@@ -161,14 +158,16 @@ namespace PlayingCardGame.Utilities
         {
             if (Hand.Count != 5) return false;
 
-            // 數字皆不相同
-            bool isDistinct = Hand.Distinct().Count() == 5;
-            
-            // 數字連續 可以連到A
-            bool straight = (Hand.Max().Value - Hand.Min().Value == 4)
-                         ||  Hand.All( c => new int[] {10, 11, 12, 13, 1}.Contains(c.Value) );
+            // 數字必須皆不相同
+            if ( Hand.Select(h => h.Value).Distinct().Count() != 5 ) return false;
 
-            return isDistinct && straight;
+            // 5張不同的牌 其數字連續
+            bool continuous = Hand.Max().Value - Hand.Min().Value == 4;
+
+            // 10 J Q K A
+            bool royal = Hand.All( c => new int[] { 10, 11, 12, 13, 1 }.Contains(c.Value) );
+
+            return continuous || royal;
         }
 
         /// <summary>
