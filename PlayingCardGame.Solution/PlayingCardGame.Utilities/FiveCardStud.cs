@@ -79,7 +79,7 @@ namespace PlayingCardGame.Utilities
         // todo 用LINQ判斷牌型
 
         /// <summary>
-        /// 判斷玩家的手牌 是否為同花大順
+        /// 判斷玩家的手牌 是否為同花大順(10JQKA)
         /// </summary>
         /// <returns></returns>
         public bool IsRoyalFlush()
@@ -88,6 +88,7 @@ namespace PlayingCardGame.Utilities
 
             // 數字是10, J, Q, K, A
             bool royal = Hand.All(c => new int[] { 10, 11, 12, 13, 1 }.Contains(c.Value));
+            
             // 是同花
             bool flush = IsFlush();
 
@@ -120,14 +121,13 @@ namespace PlayingCardGame.Utilities
             if (Hand.Count != 5) return false;
 
             // 只出現兩種數字
-            bool twoNums = Hand.Select(h => h.Value).Distinct().Count() == 2;
-            //bool twoNums = Hand.Select(h => h.Value).GroupBy(x => x).Count() == 2;
+            bool twoNums = Hand.Select(c => c.Value).Distinct().Count() == 2;
+            //bool twoNums = Hand.Select(c => c.Value).GroupBy(x => x).Count() == 2;
 
             // 4張相同數字 + 1張其他數字
-            List<int> values = Hand.Select(h => h.Value).ToList();
+            List<int> values = Hand.Select(c => c.Value).OrderBy(v => v).ToList();
 
-            bool four = values.Count(v => v == values[0]) == 4
-                     || values.Count(v => v == values[1]) == 4;
+            bool four = values.Count(v => v == values[2]) == 4;
 
             return twoNums && four;
         }
@@ -153,7 +153,7 @@ namespace PlayingCardGame.Utilities
             if (Hand.Count != 5) return false;
 
             // 所有牌花色相同
-            bool flush = Hand.Select(h => h.Suit).Distinct().Count() == 1;
+            bool flush = Hand.Select(c => c.Suit).Distinct().Count() == 1;
 
             return flush;
         }
@@ -167,11 +167,11 @@ namespace PlayingCardGame.Utilities
             if (Hand.Count != 5) return false;
 
             // 數字必須皆不相同
-            if ( Hand.Select(h => h.Value).Distinct().Count() != 5 ) return false;
+            if ( Hand.Select(c => c.Value).Distinct().Count() != 5 ) return false;
 
             // 5張不同的牌 其數字連續
-            bool continuous = Hand.Select(h => h.Value).Max()
-                             -Hand.Select(h => h.Value).Min() == 4;
+            bool continuous = Hand.Select(c => c.Value).Max()
+                             -Hand.Select(c => c.Value).Min() == 4;
 
             // 10 J Q K A
             bool royal = Hand.All( c => new int[] { 10,11,12,13,1 }.Contains(c.Value) );

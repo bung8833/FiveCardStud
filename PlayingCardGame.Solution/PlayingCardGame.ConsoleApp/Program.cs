@@ -11,28 +11,18 @@ namespace PlayingCardGame.ConsoleApp
     {
         static void Main(string[] args)
         {
-            List<int> list = new List<int>() { 1, 2, 2, 2, 2 };
+            var player1 = new FiveCardStud();
 
-            int count = list.GroupBy(x => x).Count();
+            player1.Hand = new List<Card>
+            {
+                new Card(Suits.s,  2),
+                new Card(Suits.h,  2),
+                new Card(Suits.d,  2),
+                new Card(Suits.c, 10),
+                new Card(Suits.c,  2),
+            };
 
-            Console.WriteLine(count);
-
-
-
-
-
-            //var player1 = new FiveCardStud();
-
-            //player1.Hand = new List<Card>
-            //{
-            //    new Card(Suits.s, 10),
-            //    new Card(Suits.s, 11),
-            //    new Card(Suits.s, 12),
-            //    new Card(Suits.s, 13),
-            //    new Card(Suits.s, 1),
-            //};
-
-            //Console.WriteLine(new FiveCardStud().IsRoyalFlush(player1.Hand));
+            Console.WriteLine(player1 + " IsFourOfAKind: " + player1.IsFourOfAKind());
 
 
             Console.ReadLine();
