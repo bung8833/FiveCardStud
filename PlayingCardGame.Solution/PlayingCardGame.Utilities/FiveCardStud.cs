@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace PlayingCardGame.Utilities
 {
@@ -42,7 +44,7 @@ namespace PlayingCardGame.Utilities
         }
 
         /// <summary>
-        /// 判斷兩副手牌中的牌是否相同 只比較其值 不管順序
+        /// 判斷兩副手牌中的牌是否相同 只比較其值 不論順序
         /// </summary>
         /// <param name="obj"></param>
         /// <returns></returns>
@@ -55,6 +57,7 @@ namespace PlayingCardGame.Utilities
             if (objAsStud == null) return false;
             else return (this.Hand.Count == objAsStud.Hand.Count
                          && this.Hand.All(objAsStud.Hand.Contains));
+            //else return this.Hand.SequenceEqual(objAsStud.Hand);
         }
 
         public override string ToString()
@@ -73,25 +76,17 @@ namespace PlayingCardGame.Utilities
         {
             return Hand.GetHashCode();
         }
-
-
-
+        
         // todo 用LINQ判斷牌型
 
         /// <summary>
-        /// 判斷玩家的手牌 是否為同花大順
+        /// 判斷玩家的手牌 是否為同花大順(10到A)
         /// </summary>
         /// <returns></returns>
         public bool IsRoyalFlush()
         {
-            if (Hand.Count != 5) return false;
 
-            // 數字是10, J, Q, K, A
-            bool royal = Hand.All(c => new int[] { 10, 11, 12, 13, 1 }.Contains(c.Value));
-            // 是同花
-            bool flush = IsFlush();
-
-            return royal && flush;
+            return true;
         }
 
         /// <summary>
@@ -100,15 +95,8 @@ namespace PlayingCardGame.Utilities
         /// <returns></returns>
         public bool IsStraightFlush()
         {
-            if (Hand.Count != 5) return false;
 
-            // 是同花
-            bool flush = IsFlush();
-
-            // 是順子
-            bool straight = IsStraight();
-
-            return flush && straight;
+            return true;
         }
 
         /// <summary>
@@ -117,19 +105,8 @@ namespace PlayingCardGame.Utilities
         /// <returns></returns>
         public bool IsFourOfAKind()
         {
-            if (Hand.Count != 5) return false;
 
-            // 只出現兩種數字
-            bool twoNums = Hand.Select(h => h.Value).Distinct().Count() == 2;
-            //bool twoNums = Hand.Select(h => h.Value).GroupBy(x => x).Count() == 2;
-
-            // 4張相同數字 + 1張其他數字
-            List<int> values = Hand.Select(h => h.Value).ToList();
-
-            bool four = values.Count(v => v == values[0]) == 4
-                     || values.Count(v => v == values[1]) == 4;
-
-            return twoNums && four;
+            return true;
         }
 
         /// <summary>
@@ -138,8 +115,6 @@ namespace PlayingCardGame.Utilities
         /// <returns></returns>
         public bool IsFullHouse()
         {
-            if (Hand.Count != 5) return false;
-
 
             return true;
         }
@@ -150,12 +125,8 @@ namespace PlayingCardGame.Utilities
         /// <returns></returns>
         public bool IsFlush()
         {
-            if (Hand.Count != 5) return false;
 
-            // 所有牌花色相同
-            bool flush = Hand.Select(h => h.Suit).Distinct().Count() == 1;
-
-            return flush;
+            return true;
         }
 
         /// <summary>
@@ -164,19 +135,8 @@ namespace PlayingCardGame.Utilities
         /// <returns></returns>
         public bool IsStraight()
         {
-            if (Hand.Count != 5) return false;
 
-            // 數字必須皆不相同
-            if ( Hand.Select(h => h.Value).Distinct().Count() != 5 ) return false;
-
-            // 5張不同的牌 其數字連續
-            bool continuous = Hand.Select(h => h.Value).Max()
-                             -Hand.Select(h => h.Value).Min() == 4;
-
-            // 10 J Q K A
-            bool royal = Hand.All( c => new int[] { 10,11,12,13,1 }.Contains(c.Value) );
-
-            return continuous || royal;
+            return true;
         }
 
         /// <summary>
@@ -185,8 +145,6 @@ namespace PlayingCardGame.Utilities
         /// <returns></returns>
         public bool IsThreeOfAKind()
         {
-            if (Hand.Count != 5) return false;
-
 
             return true;
         }
@@ -197,8 +155,6 @@ namespace PlayingCardGame.Utilities
         /// <returns></returns>
         public bool IsTwoPair()
         {
-            if (Hand.Count != 5) return false;
-
 
             return true;
         }
@@ -209,8 +165,6 @@ namespace PlayingCardGame.Utilities
         /// <returns></returns>
         public bool IsPair()
         {
-            if (Hand.Count != 5) return false;
-
 
             return true;
         }
@@ -221,8 +175,6 @@ namespace PlayingCardGame.Utilities
         /// <returns></returns>
         public bool IsHighCard()
         {
-            if (Hand.Count != 5) return false;
-
 
             return true;
         }

@@ -11,30 +11,40 @@ namespace PlayingCardGame.ConsoleApp
     {
         static void Main(string[] args)
         {
-            List<int> list = new List<int>() { 1, 2, 2, 2, 2 };
+            var player1 = new FiveCardStud();
 
-            int count = list.GroupBy(x => x).Count();
+            player1.Hand = new List<Card>
+            {
+                new Card(Suits.s, 10),
+                new Card(Suits.h, 11),
+                new Card(Suits.s, 11),
+                new Card(Suits.d,  1),
+                new Card(Suits.d, 11),
+            };
+            player1.Hand.SoryByHighOrLow();
 
-            Console.WriteLine(count);
+            Console.WriteLine(player1 + "為同花大順: " + player1.IsRoyalFlush());
 
 
 
 
 
-            //var player1 = new FiveCardStud();
 
-            //player1.Hand = new List<Card>
+
+
+            //var deck1 = new Deck();
+            //deck1.Shuffle();
+            //Console.WriteLine(deck1);
+
+            //List<Card> cards = new List<Card>();
+
+            //for (int i = 0; i < 10; i++)
             //{
-            //    new Card(Suits.s, 10),
-            //    new Card(Suits.s, 11),
-            //    new Card(Suits.s, 12),
-            //    new Card(Suits.s, 13),
-            //    new Card(Suits.s, 1),
-            //};
-
-            //Console.WriteLine(new FiveCardStud().IsRoyalFlush(player1.Hand));
-
-
+            //    cards = deck1.Deal(5);
+            //    cards.SoryByHighOrLow();
+            //    cards.ForEach(c => Console.Write(c + " "));
+            //    Console.WriteLine();
+            //}
             Console.ReadLine();
         }
     }
