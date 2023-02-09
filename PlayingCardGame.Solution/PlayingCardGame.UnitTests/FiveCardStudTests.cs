@@ -2,36 +2,52 @@ namespace PlayingCardGame.UnitTests
 {
     public class Tests
     {
-        //[Test]
-        //public void GetValueDistribution_耞狡计计秖だガ()
-        //{
-        //    List<int> values = new List<int>() { 1, 1, 12, 13, 12 };
-
-        //    List<int> expected = new List<int>() { 1, 2, 2 };
-
-
-
-
-        //    List<int> actual = values.GetValueDistribution();
-        //    Assert.AreEqual(expected, actual);
-        //}
-
-        [Test]
-        public void IsPair_耞礟()
+        [Test, TestCaseSource(nameof(HandCases))]
+        public List<int> GetValueAppearances_ㄏノTestCaseSource代刚(List<int> values)
         {
-            var player1 = new FiveCardStud();
-            player1.Hand = new List<Card>
-            {
-                new Card(Suits.s,  9),
-                new Card(Suits.h,  9),
-                new Card(Suits.c,  8),
-                new Card(Suits.d,  7),
-
-                new Card(Suits.s, 11),
-            };
-            bool expected = true;
-            bool actual = player1.IsPair();
-            Assert.AreEqual(expected, actual);
+            return values.GetValueAppearances();
         }
+        static TestCaseData[] HandCases =
+        {
+            new TestCaseData(new List<int>{ 5, 6, 5, 6,13 }).Returns(new List<int>{ 1, 2, 2 }),
+
+            new TestCaseData(new List<int>{ 1, 1, 1, 1,13 }).Returns(new List<int>{ 1, 4 }),
+
+            new TestCaseData(new List<int>{13,13,13, 2, 2 }).Returns(new List<int>{ 2, 3 }),
+
+            new TestCaseData(new List<int>{13,13,13, 2, 1 }).Returns(new List<int>{ 1, 1, 3 }),
+
+            new TestCaseData(new List<int>{ 1, 2, 3, 4, 5 }).Returns(new List<int>{ 1, 1, 1, 1, 1 }),
+        };
+
+
+
+        [Test, TestCaseSource(nameof(IsStraightCases))]
+        public bool IsStraight_ㄏノTestCaseSource代刚(List<Card> hand)
+        {
+            return new FiveCardStud().IsStraight(hand);
+        }
+        static object[] IsStraightCases =
+        {
+            new TestCaseData( new List<Card> {new Card(Suits.s, 10),
+                                              new Card(Suits.s, 11),
+                                              new Card(Suits.s, 12),
+                                              new Card(Suits.s, 13),
+                                              new Card(Suits.s,  1),} ).Returns(false), // RoyalFlush
+
+            new TestCaseData( new List<Card> {new Card(Suits.s,  8),
+                                              new Card(Suits.s,  9),
+                                              new Card(Suits.s, 10),
+                                              new Card(Suits.s, 11),
+                                              new Card(Suits.s, 12),} ).Returns(false), // StraightFlush
+
+            new TestCaseData( new List<Card> {new Card(Suits.s,  8),
+                                              new Card(Suits.h,  9),
+                                              new Card(Suits.c, 10),
+                                              new Card(Suits.d, 11),
+                                              new Card(Suits.s, 12),} ).Returns(true), // Straight
+
+            
+        };
     }
 }

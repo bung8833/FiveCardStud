@@ -9,23 +9,24 @@ namespace PlayingCardGame
     public static class Extensions
     {
         /// <summary>
-        /// 判斷List中重複數字的數量分布  
+        /// 計算List中每種數字的出現次數
         /// 此方法可用來判斷撲克牌牌型
         /// </summary>
-        /// <param name="values"></param>
-        /// <returns>例如若傳入 {5, 6, 5, 6, 13} 則傳回 {1, 2, 2}</returns>
-        public static List<int> GetValueDistribution(this List<int> values)
+        /// <param name="source"></param>
+        /// <returns>例如若傳入 { 5, 6, 5, 6, 13 } 則傳回 { 1, 2, 2 }</returns>
+        public static List<int> GetValueAppearances(this List<int> source)
         {
-            List<int> valDist = values.Distinct().ToList();
+            List<int> distincts = source.Distinct().ToList();
 
-            List<int> countDist = new List<int>();
-            for (int idx = 0; idx < valDist.Count; idx++)
+            // 計算source中 每個數字各出現幾次
+            List<int> appearances = new List<int>();
+            for (int idx = 0; idx < distincts.Count; idx++)
             {
-                int count = values.Count(v => v == valDist[idx]);
-                countDist.Add(count);
+                int count = source.Count(v => v == distincts[idx]);
+                appearances.Add(count);
             }
 
-            return countDist.OrderBy(v => v).ToList();
+            return appearances.OrderBy(v => v).ToList();
         }
     }
 }

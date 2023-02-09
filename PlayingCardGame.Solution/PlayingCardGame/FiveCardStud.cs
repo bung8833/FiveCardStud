@@ -84,7 +84,7 @@ namespace PlayingCardGame
         /// 判斷玩家的手牌 是否為同花大順(10JQKA)
         /// </summary>
         /// <returns></returns>
-        public bool IsRoyalFlush()
+        public bool IsRoyalFlush(List<Card> Hand)
         {
             if (Hand.Count != 5) return false;
 
@@ -92,7 +92,7 @@ namespace PlayingCardGame
             bool royal = Hand.Select(h => h.Value).All(new int[] { 10, 11, 12, 13, 1 }.Contains);
             
             // 是同花
-            bool flush = IsFlush();
+            bool flush = IsFlush(Hand);
 
             return royal && flush;
         }
@@ -101,15 +101,15 @@ namespace PlayingCardGame
         /// 判斷玩家的手牌 是否為同花順
         /// </summary>
         /// <returns></returns>
-        public bool IsStraightFlush()
+        public bool IsStraightFlush(List<Card> Hand)
         {
             if (Hand.Count != 5) return false;
 
             // 是同花
-            bool flush = IsFlush();
+            bool flush = IsFlush(Hand);
 
             // 是順子
-            bool straight = IsStraight();
+            bool straight = IsStraight(Hand);
 
             return flush && straight;
         }
@@ -118,17 +118,17 @@ namespace PlayingCardGame
         /// 判斷玩家的手牌 是否為四條
         /// </summary>
         /// <returns></returns>
-        public bool IsFourOfAKind()
+        public bool IsFourOfAKind(List<Card> Hand)
         {
             if (Hand.Count != 5) return false;
 
             List<int> values = Hand.Select(c => c.Value).ToList();
 
-            // 手牌中重複數字的數量分布
-            List<int> valueDist = values.GetValueDistribution();
+            // 手牌中每種數字的出現次數
+            List<int> vAppears = values.GetValueAppearances();
 
             // 4張相同數字 + 1張其他數字
-            if (valueDist.SequenceEqual(new List<int> { 1, 4 }))
+            if (vAppears.SequenceEqual(new List<int> { 1, 4 }))
             {
                 return true;
             }
@@ -140,17 +140,17 @@ namespace PlayingCardGame
         /// 判斷玩家的手牌 是否為葫蘆
         /// </summary>
         /// <returns></returns>
-        public bool IsFullHouse()
+        public bool IsFullHouse(List<Card> Hand)
         {
             if (Hand.Count != 5) return false;
 
             List<int> values = Hand.Select(c => c.Value).ToList();
 
             // 手牌中重複數字的數量分布
-            List<int> valueDist = values.GetValueDistribution();
+            List<int> vAppears = values.GetValueAppearances();
 
             // 3張相同數字 + 另外2張相同數字
-            if (valueDist.SequenceEqual(new List<int> { 2, 3 }))
+            if (vAppears.SequenceEqual(new List<int> { 2, 3 }))
             {
                 return true;
             }
@@ -162,7 +162,7 @@ namespace PlayingCardGame
         /// 判斷玩家的手牌 是否為同花
         /// </summary>
         /// <returns></returns>
-        public bool IsFlush()
+        public bool IsFlush(List<Card> Hand)
         {
             if (Hand.Count != 5) return false;
 
@@ -176,7 +176,7 @@ namespace PlayingCardGame
         /// 判斷玩家的手牌 是否為順子
         /// </summary>
         /// <returns></returns>
-        public bool IsStraight()
+        public bool IsStraight(List<Card> Hand)
         {
             if (Hand.Count != 5) return false;
 
@@ -197,17 +197,17 @@ namespace PlayingCardGame
         /// 判斷玩家的手牌 是否為三條
         /// </summary>
         /// <returns></returns>
-        public bool IsThreeOfAKind()
+        public bool IsThreeOfAKind(List<Card> Hand)
         {
             if (Hand.Count != 5) return false;
 
             List<int> values = Hand.Select(c => c.Value).ToList();
 
             // 手牌中重複數字的數量分布fv
-            List<int> valueDist = values.GetValueDistribution();
+            List<int> vAppears = values.GetValueAppearances();
 
             // 3張相同數字 + 單張 + 單張
-            if (valueDist.SequenceEqual(new List<int> { 1, 1, 3 }))
+            if (vAppears.SequenceEqual(new List<int> { 1, 1, 3 }))
             {
                 return true;
             }
@@ -219,17 +219,17 @@ namespace PlayingCardGame
         /// 判斷玩家的手牌 是否為兩對
         /// </summary>
         /// <returns></returns>
-        public bool IsTwoPair()
+        public bool IsTwoPair(List<Card> Hand)
         {
             if (Hand.Count != 5) return false;
 
             List<int> values = Hand.Select(c => c.Value).ToList();
 
             // 手牌中重複數字的數量分布
-            List<int> valueDist = values.GetValueDistribution();
+            List<int> vAppears = values.GetValueAppearances();
 
             // 2張相同數字 + 2張相同數字 + 單張
-            if (valueDist.SequenceEqual(new List<int> { 1, 2, 2 }))
+            if (vAppears.SequenceEqual(new List<int> { 1, 2, 2 }))
             {
                 return true;
             }
@@ -241,17 +241,17 @@ namespace PlayingCardGame
         /// 判斷玩家的手牌 是否為一對
         /// </summary>
         /// <returns></returns>
-        public bool IsPair()
+        public bool IsPair(List<Card> Hand)
         {
             if (Hand.Count != 5) return false;
 
             List<int> values = Hand.Select(c => c.Value).ToList();
 
             // 手牌中重複數字的數量分布
-            List<int> valueDist = values.GetValueDistribution();
+            List<int> vAppears = values.GetValueAppearances();
 
             // 2張相同數字 + 單張 + 單張 + 單張
-            if (valueDist.SequenceEqual(new List<int> { 1, 1, 1, 2 }))
+            if (vAppears.SequenceEqual(new List<int> { 1, 1, 1, 2 }))
             {
                 return true;
             }
@@ -263,7 +263,7 @@ namespace PlayingCardGame
         /// 判斷玩家的手牌 是否為單張
         /// </summary>
         /// <returns></returns>
-        public bool IsHighCard()
+        public bool IsHighCard(List<Card> Hand)
         {
             if (Hand.Count != 5) return false;
 
