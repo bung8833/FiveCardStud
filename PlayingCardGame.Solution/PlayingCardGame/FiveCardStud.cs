@@ -78,8 +78,6 @@ namespace PlayingCardGame
 
 
 
-        // todo 用LINQ判斷牌型
-
         /// <summary>
         /// 判斷玩家的手牌 是否為同花大順(10JQKA)
         /// </summary>
@@ -103,6 +101,7 @@ namespace PlayingCardGame
         /// <returns></returns>
         public bool IsStraightFlush(List<Card> Hand)
         {
+            if ( IsRoyalFlush(Hand) ) return false;
             if (Hand.Count != 5) return false;
 
             // 是同花
@@ -164,6 +163,7 @@ namespace PlayingCardGame
         /// <returns></returns>
         public bool IsFlush(List<Card> Hand)
         {
+            if ( IsRoyalFlush(Hand) || IsStraightFlush(Hand) ) return false;
             if (Hand.Count != 5) return false;
 
             // 所有牌花色相同
@@ -178,6 +178,8 @@ namespace PlayingCardGame
         /// <returns></returns>
         public bool IsStraight(List<Card> Hand)
         {
+            //if ( IsRoyalFlush(Hand) || IsStraightFlush(Hand) ) return false;
+            if ( IsFlush(Hand) ) return false;
             if (Hand.Count != 5) return false;
 
             // 數字必須皆不相同
@@ -185,7 +187,7 @@ namespace PlayingCardGame
 
             // 5張不同的牌 其數字連續
             bool continuous = Hand.Select(c => c.Value).Max()
-                             - Hand.Select(c => c.Value).Min() == 4;
+                            - Hand.Select(c => c.Value).Min() == 4;
 
             // 10 J Q K A
             bool royal = Hand.Select(h => h.Value).All(new int[] { 10, 11, 12, 13, 1 }.Contains);
@@ -258,6 +260,8 @@ namespace PlayingCardGame
 
             return false;
         }
+
+        // todo 用LINQ判斷牌型
 
         /// <summary>
         /// 判斷玩家的手牌 是否為單張
