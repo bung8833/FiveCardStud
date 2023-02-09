@@ -89,8 +89,8 @@ namespace PlayingCardGame
             if (Hand.Count != 5) return false;
 
             // 數字是10, J, Q, K, A
-            bool royal = Hand.All(c => new int[] { 10, 11, 12, 13, 1 }.Contains(c.Value));
-
+            bool royal = Hand.Select(h => h.Value).All(new int[] { 10, 11, 12, 13, 1 }.Contains);
+            
             // 是同花
             bool flush = IsFlush();
 
@@ -124,8 +124,10 @@ namespace PlayingCardGame
 
             List<int> values = Hand.Select(c => c.Value).ToList();
 
+            // 手牌中重複數字的數量分布
             List<int> valueDist = values.GetValueDistribution();
 
+            // 4張相同數字 + 1張其他數字
             if (valueDist.SequenceEqual(new List<int> { 1, 4 }))
             {
                 return true;
@@ -142,8 +144,18 @@ namespace PlayingCardGame
         {
             if (Hand.Count != 5) return false;
 
+            List<int> values = Hand.Select(c => c.Value).ToList();
 
-            return true;
+            // 手牌中重複數字的數量分布
+            List<int> valueDist = values.GetValueDistribution();
+
+            // 3張相同數字 + 另外2張相同數字
+            if (valueDist.SequenceEqual(new List<int> { 2, 3 }))
+            {
+                return true;
+            }
+
+            return false;
         }
 
         /// <summary>
@@ -176,7 +188,7 @@ namespace PlayingCardGame
                              - Hand.Select(c => c.Value).Min() == 4;
 
             // 10 J Q K A
-            bool royal = Hand.All(c => new int[] { 10, 11, 12, 13, 1 }.Contains(c.Value));
+            bool royal = Hand.Select(h => h.Value).All(new int[] { 10, 11, 12, 13, 1 }.Contains);
 
             return continuous || royal;
         }
