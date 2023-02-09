@@ -1,5 +1,5 @@
 using Newtonsoft.Json.Linq;
-using PlayingCardGame.Utilities;
+using PlayingCardGame;
 
 namespace FiveCardStudTests
 {

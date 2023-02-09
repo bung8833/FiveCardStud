@@ -1,5 +1,4 @@
-﻿using PlayingCardGame.Utilities;
-using PlayingCardGame;
+﻿using PlayingCardGame;
 using System;
 using System.Collections.Generic;
 using System.Linq;
