@@ -1,6 +1,4 @@
-using PlayingCardGame;
-
-namespace PlayingCardGameUnitTests
+namespace PlayingCardGame.UnitTests
 {
     public class Tests
     {
