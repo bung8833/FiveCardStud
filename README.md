@@ -6,6 +6,6 @@
 
 
 用擴充方法判斷一手牌中有多少數字重複的牌
-List<int> GetValueDistribution(this List<int> values)
+List<<int>> GetValueDistribution(this List<int> values)
 例如 values = { 1, 1, 1, 6, 6 }
 則傳回 { 2, 3 }
