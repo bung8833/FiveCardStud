@@ -77,9 +77,9 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\PlayingCardGame.Utilities\PlayingCardGame.csproj">
+    <ProjectReference Include="..\PlayingCardGame.Utilities\PlayingCardGame.Utilities.csproj">
       <Project>{333570d7-8ea8-4b79-8666-4d9b13418306}</Project>
-      <Name>PlayingCardGame</Name>
+      <Name>PlayingCardGame.Utilities</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

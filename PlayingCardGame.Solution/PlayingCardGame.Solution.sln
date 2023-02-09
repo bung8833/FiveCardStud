@@ -5,7 +5,7 @@ VisualStudioVersion = 17.4.33110.190
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PlayingCardGame.WinApp", "PlayingCardGame.WinApp\PlayingCardGame.WinApp.csproj", "{3494A316-0AC5-4500-88B5-A6BEF8952E02}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PlayingCardGame", "PlayingCardGame.Utilities\PlayingCardGame.csproj", "{333570D7-8EA8-4B79-8666-4D9B13418306}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PlayingCardGame.Utilities", "PlayingCardGame.Utilities\PlayingCardGame.Utilities.csproj", "{333570D7-8EA8-4B79-8666-4D9B13418306}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PlayingCardGame.ConsoleApp", "PlayingCardGame.ConsoleApp\PlayingCardGame.ConsoleApp.csproj", "{714D2865-EC47-4536-B0EB-7FC4C9F4E51A}"
 EndProject

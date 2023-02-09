@@ -125,20 +125,10 @@ namespace PlayingCardGame.Utilities
 
             List<int> valueDist = values.GetValueDistribution();
 
-            if (valueDist.OrderBy(v => v).SequenceEqual(new List<int> { 1, 4 }))
+            if (valueDist.SequenceEqual(new List<int> { 1, 4 }))
             {
                 return true;
             }
-
-            //if ( new List<int> { 1, 4 }.SequenceEqual(valueDist.OrderBy(v => v)) )
-            //{
-            //    return true;
-            //}
-
-            //if (new List<int> { 1, 4 }.All(valueDist.Contains))
-            //{
-            //    return true;
-            //}
 
             return false;
         }
