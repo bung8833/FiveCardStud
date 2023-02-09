@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Windows.Markup;
 
 namespace PlayingCardGame.Utilities
 {
@@ -120,16 +121,26 @@ namespace PlayingCardGame.Utilities
         {
             if (Hand.Count != 5) return false;
 
-            // 只出現兩種數字
-            bool twoNums = Hand.Select(c => c.Value).Distinct().Count() == 2;
-            //bool twoNums = Hand.Select(c => c.Value).GroupBy(x => x).Count() == 2;
+            List<int> values = Hand.Select(c => c.Value).ToList();
 
-            // 4張相同數字 + 1張其他數字
-            List<int> values = Hand.Select(c => c.Value).OrderBy(v => v).ToList();
+            List<int> valueDist = values.GetValueDistribution();
 
-            bool four = values.Count(v => v == values[2]) == 4;
+            if (valueDist.OrderBy(v => v).SequenceEqual(new List<int> { 1, 4 }))
+            {
+                return true;
+            }
 
-            return twoNums && four;
+            //if ( new List<int> { 1, 4 }.SequenceEqual(valueDist.OrderBy(v => v)) )
+            //{
+            //    return true;
+            //}
+
+            //if (new List<int> { 1, 4 }.All(valueDist.Contains))
+            //{
+            //    return true;
+            //}
+
+            return false;
         }
 
         /// <summary>
