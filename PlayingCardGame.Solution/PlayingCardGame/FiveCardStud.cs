@@ -203,7 +203,7 @@ namespace PlayingCardGame
 
             List<int> values = Hand.Select(c => c.Value).ToList();
 
-            // 手牌中重複數字的數量分布
+            // 手牌中重複數字的數量分布fv
             List<int> valueDist = values.GetValueDistribution();
 
             // 3張相同數字 + 單張 + 單張
