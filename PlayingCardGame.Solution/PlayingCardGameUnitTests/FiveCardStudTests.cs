@@ -19,20 +19,20 @@ namespace PlayingCardGameUnitTests
         //}
 
         [Test]
-        public void FiveCardStud_IsStraight()
+        public void IsPair_§PÂ_µP«¬()
         {
             var player1 = new FiveCardStud();
             player1.Hand = new List<Card>
             {
-                new Card(Suits.s, 11),
-                new Card(Suits.h, 12),
-                new Card(Suits.c, 13),
-                new Card(Suits.d,  1),
+                new Card(Suits.s,  9),
+                new Card(Suits.h,  9),
+                new Card(Suits.c,  8),
+                new Card(Suits.d,  7),
 
-                new Card(Suits.s,  2),
+                new Card(Suits.s, 11),
             };
-            bool expected = false;
-            bool actual = player1.IsStraight();
+            bool expected = true;
+            bool actual = player1.IsPair();
             Assert.AreEqual(expected, actual);
         }
     }

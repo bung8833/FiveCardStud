@@ -201,8 +201,18 @@ namespace PlayingCardGame
         {
             if (Hand.Count != 5) return false;
 
+            List<int> values = Hand.Select(c => c.Value).ToList();
 
-            return true;
+            // 手牌中重複數字的數量分布
+            List<int> valueDist = values.GetValueDistribution();
+
+            // 3張相同數字 + 單張 + 單張
+            if (valueDist.SequenceEqual(new List<int> { 1, 1, 3 }))
+            {
+                return true;
+            }
+
+            return false;
         }
 
         /// <summary>
@@ -213,8 +223,18 @@ namespace PlayingCardGame
         {
             if (Hand.Count != 5) return false;
 
+            List<int> values = Hand.Select(c => c.Value).ToList();
 
-            return true;
+            // 手牌中重複數字的數量分布
+            List<int> valueDist = values.GetValueDistribution();
+
+            // 2張相同數字 + 2張相同數字 + 單張
+            if (valueDist.SequenceEqual(new List<int> { 1, 2, 2 }))
+            {
+                return true;
+            }
+
+            return false;
         }
 
         /// <summary>
@@ -225,8 +245,18 @@ namespace PlayingCardGame
         {
             if (Hand.Count != 5) return false;
 
+            List<int> values = Hand.Select(c => c.Value).ToList();
 
-            return true;
+            // 手牌中重複數字的數量分布
+            List<int> valueDist = values.GetValueDistribution();
+
+            // 2張相同數字 + 單張 + 單張 + 單張
+            if (valueDist.SequenceEqual(new List<int> { 1, 1, 1, 2 }))
+            {
+                return true;
+            }
+
+            return false;
         }
 
         /// <summary>
