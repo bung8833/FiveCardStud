@@ -13,14 +13,14 @@ namespace PlayingCardGame.ConsoleApp
         {
             var player = new FiveCardStud();
             player.Hand = new List<Card>()
-            {                                 new Card(Suits.s, 10),
+            {                                 new Card(Suits.s,  7),
+                                              new Card(Suits.s,  8),
+                                              new Card(Suits.s,  9),
+                                              new Card(Suits.s, 10),
                                               new Card(Suits.s, 11),
-                                              new Card(Suits.s, 12),
-                                              new Card(Suits.s, 13),
-                                              new Card(Suits.s,  1),
             };
 
-            Console.WriteLine(player + "IsStraight: " + player.IsStraight(player.Hand).ToString() );
+            Console.WriteLine(player + "IsStraightFlush: " + player.IsStraightFlush(player.Hand).ToString() );
 
             Console.ReadLine();
         }

@@ -108,7 +108,7 @@ namespace PlayingCardGame
             bool flush = Hand.Select(c => c.Suit).Distinct().Count() == 1;
 
             // 是順子
-            bool straight = IsStraight(Hand);
+            bool straight = Hand.Are5ContinuousCards();
 
             return flush && straight;
         }
@@ -163,7 +163,7 @@ namespace PlayingCardGame
         /// <returns></returns>
         public bool IsFlush(List<Card> Hand)
         {
-            if ( IsStraight(Hand) ) return false;
+            if ( Hand.Are5ContinuousCards() ) return false;
             if (Hand.Count != 5) return false;
 
             // 所有牌花色相同
@@ -180,19 +180,9 @@ namespace PlayingCardGame
         {
             bool flush = Hand.Select(c => c.Suit).Distinct().Count() == 1;
             if (flush) return false;
-            if (Hand.Count != 5) return false;
+            //if (Hand.Count != 5) return false;
 
-            // 數字必須皆不相同
-            if (Hand.Select(c => c.Value).Distinct().Count() != 5) return false;
-
-            // 5張不同的牌 其數字連續
-            bool continuous = Hand.Select(c => c.Value).Max()
-                            - Hand.Select(c => c.Value).Min() == 4;
-
-            // 10 J Q K A
-            bool royal = Hand.Select(h => h.Value).All(new int[] { 10, 11, 12, 13, 1 }.Contains);
-
-            return continuous || royal;
+            return Hand.Are5ContinuousCards();
         }
 
         /// <summary>
@@ -273,7 +263,7 @@ namespace PlayingCardGame
             if ( Hand.Select(c => c.Value).Distinct().Count() != 5 ) return false;
 
             // 不是順子
-            if ( IsStraight(Hand) ) return false;
+            if ( Hand.Are5ContinuousCards() ) return false;
 
             // 不是同花
             if ( Hand.Select(c => c.Suit).Distinct().Count() == 1 ) return false;
