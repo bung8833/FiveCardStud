@@ -88,9 +88,9 @@ namespace PlayingCardGame
 
             // 數字是10, J, Q, K, A
             bool royal = Hand.Select(h => h.Value).All(new int[] { 10, 11, 12, 13, 1 }.Contains);
-            
+
             // 是同花
-            bool flush = IsFlush(Hand);
+            bool flush = Hand.Select(c => c.Suit).Distinct().Count() == 1;
 
             return royal && flush;
         }
@@ -105,7 +105,7 @@ namespace PlayingCardGame
             if (Hand.Count != 5) return false;
 
             // 是同花
-            bool flush = IsFlush(Hand);
+            bool flush = Hand.Select(c => c.Suit).Distinct().Count() == 1;
 
             // 是順子
             bool straight = IsStraight(Hand);
@@ -163,7 +163,7 @@ namespace PlayingCardGame
         /// <returns></returns>
         public bool IsFlush(List<Card> Hand)
         {
-            if ( IsRoyalFlush(Hand) || IsStraightFlush(Hand) ) return false;
+            if ( IsStraight(Hand) ) return false;
             if (Hand.Count != 5) return false;
 
             // 所有牌花色相同
@@ -178,8 +178,8 @@ namespace PlayingCardGame
         /// <returns></returns>
         public bool IsStraight(List<Card> Hand)
         {
-            //if ( IsRoyalFlush(Hand) || IsStraightFlush(Hand) ) return false;
-            if ( IsFlush(Hand) ) return false;
+            bool flush = Hand.Select(c => c.Suit).Distinct().Count() == 1;
+            if (flush) return false;
             if (Hand.Count != 5) return false;
 
             // 數字必須皆不相同
@@ -261,7 +261,7 @@ namespace PlayingCardGame
             return false;
         }
 
-        // todo 用LINQ判斷牌型
+        // todo 用LINQ判斷牌型 然後單元測試
 
         /// <summary>
         /// 判斷玩家的手牌 是否為單張
