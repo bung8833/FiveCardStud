@@ -261,8 +261,6 @@ namespace PlayingCardGame
             return false;
         }
 
-        // todo 用LINQ判斷牌型 然後單元測試
-
         /// <summary>
         /// 判斷玩家的手牌 是否為單張
         /// </summary>
@@ -271,6 +269,14 @@ namespace PlayingCardGame
         {
             if (Hand.Count != 5) return false;
 
+            // 數字必須皆不相同
+            if ( Hand.Select(c => c.Value).Distinct().Count() != 5 ) return false;
+
+            // 不是順子
+            if ( IsStraight(Hand) ) return false;
+
+            // 不是同花
+            if ( Hand.Select(c => c.Suit).Distinct().Count() == 1 ) return false;
 
             return true;
         }
