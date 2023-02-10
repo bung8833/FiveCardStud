@@ -55,7 +55,7 @@ namespace PlayingCardGame
 
             Deck objAsDeck = obj as Deck;
             if (objAsDeck == null) return false;
-            else return (this.Cards.SequenceEqual(objAsDeck.Cards));
+            else return (this.Cards.SequenceEqual(objAsDeck.Cards));// todo 好像不對
         }
 
         public override string ToString()
@@ -78,7 +78,7 @@ namespace PlayingCardGame
         /// <summary>
         /// 將Deck中的Cards洗牌
         /// </summary>
-        public void Shuffle()
+        public Deck Shuffle()
         {
             int n = Cards.Count;
 
@@ -92,6 +92,8 @@ namespace PlayingCardGame
                 Cards[n] = Cards[index];
                 Cards[index] = temp;
             }
+
+            return this;
         }
 
         /// <summary>
@@ -117,7 +119,25 @@ namespace PlayingCardGame
         /// <returns></returns>
         public List<Card> Deal(int countOfDeal)
         {
+
+
+
+
+
+
+
+
+
+
+
+
+
+
             // todo 改成從頭取 Cards.Take() Cards.RemoveRange(0, count)
+
+
+
+
 
             int count = Cards.Count;
             if (count - countOfDeal < 0) throw new Exception("Deck中的牌不足");

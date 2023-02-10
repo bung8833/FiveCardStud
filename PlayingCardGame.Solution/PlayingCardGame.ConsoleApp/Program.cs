@@ -20,7 +20,8 @@ namespace PlayingCardGame.ConsoleApp
                                               new Card(Suits.s, 11),
             };
 
-            Console.WriteLine(player + "IsStraightFlush: " + player.IsStraightFlush(player.Hand).ToString() );
+
+            Console.WriteLine(player + "IsStraightFlush: " + player.IsStraightFlush() );
 
             Console.ReadLine();
         }
