@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -11,17 +12,16 @@ namespace PlayingCardGame.ConsoleApp
     {
         static void Main(string[] args)
         {
-            var player = new FiveCardStud();
-            player.Hand = new List<Card>()
-            {                                 new Card(Suits.s,  7),
-                                              new Card(Suits.s,  8),
-                                              new Card(Suits.s,  9),
-                                              new Card(Suits.s, 10),
-                                              new Card(Suits.s, 11),
-            };
+            var deck1 = new Deck();
+            deck1.Shuffle();
+
+            var hand1 = deck1.Deal(5).SoryByHighOrLow();
+            var hand2 = deck1.Deal(5).SoryByHighOrLow();
 
 
-            Console.WriteLine(player + "IsStraightFlush: " + player.IsStraightFlush() );
+            hand1.ForEach(c => Console.Write(c + " ")); Console.WriteLine();
+            hand2.ForEach(c => Console.Write(c + " ")); Console.WriteLine();
+
 
             Console.ReadLine();
         }

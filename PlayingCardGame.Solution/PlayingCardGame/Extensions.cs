@@ -35,7 +35,7 @@ namespace PlayingCardGame
         /// </summary>
         /// <param name="hand"></param>
         /// <returns></returns>
-        public static bool Are5ContinuousCards(this List<Card> hand)
+        public static bool Are5StraightCards(this List<Card> hand)
         {
             if (hand.Count != 5) return false;
 

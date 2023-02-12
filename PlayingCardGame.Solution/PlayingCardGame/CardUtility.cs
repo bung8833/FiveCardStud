@@ -47,9 +47,10 @@ namespace PlayingCardGame
         /// </summary>
         /// <param name="cards"></param>
         /// <returns></returns>
-        public static void SoryByHighOrLow(this List<Card> cards)
+        public static List<Card> SoryByHighOrLow(this List<Card> cards)
         {
             cards.Sort((x, y) => x.CompareTo(y));
+            return cards;
         }
 
         /// <summary>

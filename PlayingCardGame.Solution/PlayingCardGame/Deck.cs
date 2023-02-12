@@ -55,7 +55,7 @@ namespace PlayingCardGame
 
             Deck objAsDeck = obj as Deck;
             if (objAsDeck == null) return false;
-            else return (this.Cards.SequenceEqual(objAsDeck.Cards));// todo 好像不對
+            else return (this.Cards.SequenceEqual(objAsDeck.Cards));
         }
 
         public override string ToString()
@@ -119,35 +119,27 @@ namespace PlayingCardGame
         /// <returns></returns>
         public List<Card> Deal(int countOfDeal)
         {
+            if (countOfDeal > this.Cards.Count)
+            {
+                throw new Exception("Not enough Cards!");
+            }
+
+            List<Card> nextCards = this.Cards.Take(countOfDeal).ToList();
+            this.Cards.RemoveRange(0, countOfDeal);
+
+            return nextCards;
 
 
 
+            //int count = Cards.Count;
+            //if (count - countOfDeal < 0) throw new Exception("Deck中的牌不足");
 
+            //Card[] nextCards = new Card[countOfDeal];
+            //Cards.CopyTo(count - countOfDeal, nextCards, 0, countOfDeal);
 
+            //Cards.RemoveRange(count - countOfDeal, countOfDeal);
 
-
-
-
-
-
-
-
-
-            // todo 改成從頭取 Cards.Take() Cards.RemoveRange(0, count)
-
-
-
-
-
-            int count = Cards.Count;
-            if (count - countOfDeal < 0) throw new Exception("Deck中的牌不足");
-
-            Card[] nextCards = new Card[countOfDeal];
-            Cards.CopyTo(count - countOfDeal, nextCards, 0, countOfDeal);
-
-            Cards.RemoveRange(count - countOfDeal, countOfDeal);
-
-            return nextCards.ToList();
+            //return nextCards.ToList();
         }
 
 
