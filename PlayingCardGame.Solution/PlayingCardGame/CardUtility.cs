@@ -42,6 +42,16 @@ namespace PlayingCardGame
         }
 
         /// <summary>
+        /// 將牌按照數字、花色排序
+        /// </summary>
+        /// <param name="cards"></param>
+        /// <returns></returns>
+        public static Card[] SortByHighOrLow(this Card[] cards)
+        {
+            return cards.ToList().SortByHighOrLow().ToArray();
+        }
+
+        /// <summary>
         /// 根據數字和花色 判斷是否所有Card皆相等
         /// </summary>
         /// <param name="source"></param>

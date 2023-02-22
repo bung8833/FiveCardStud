@@ -11,37 +11,35 @@ namespace PlayingCardGame
         private List<Card> _hand = new List<Card>();
 
         /// <summary>
-        /// 玩家的手牌 介於0~5張 且不應有重複的牌
+        /// 玩家的手牌情況
         /// </summary>
-        public List<Card> Hand
+        public Card[] Hand
         {
-            get
-            {
-                if (_hand.Count > 5)
-                {
-                    throw new Exception("一手牌最多只能有5張");
-                }
-                if (_hand.Distinct().Count() < _hand.Count())
-                {
-                    throw new Exception("一手牌內不可有重複的牌");
-                }
-
-                return _hand;
-            }
-            set
-            {
-                _hand = value;
-
-                if (_hand.Count > 5)
-                {
-                    throw new Exception("一手牌最多只能有5張");
-                }
-                if (_hand.Distinct().Count() < _hand.Count())
-                {
-                    throw new Exception("一手牌內不可有重複的牌");
-                }
-            }
+            get { return _hand.ToArray(); }
         }
+
+        /// <summary>
+        /// 發一張牌到玩家的手牌中
+        /// </summary>
+        /// <param name="addend"></param>
+        /// <returns>發牌後 玩家的手牌情況</returns>
+        /// <exception cref="Exception"></exception>
+        public Card[] AddToHand(Card addend)
+        {
+            if (_hand.Count + 1 > 5)
+            {
+                throw new Exception("手牌最多只能有5張");
+            }
+            if (_hand.Contains(addend))
+            {
+                throw new Exception("手牌內不可有完全相同的牌");
+            }
+
+            _hand.Add(addend);
+
+            return _hand.ToArray();
+        }
+
 
         /// <summary>
         /// 判斷兩副手牌中的牌是否相同 只比較其值 不管順序
@@ -55,7 +53,7 @@ namespace PlayingCardGame
 
             FiveCardStud objAsStud = obj as FiveCardStud;
             if (objAsStud == null) return false;
-            else return (this.Hand.Count == objAsStud.Hand.Count
+            else return (this.Hand.Count() == objAsStud.Hand.Count()
                          && this.Hand.All(objAsStud.Hand.Contains));
         }
 
@@ -82,9 +80,9 @@ namespace PlayingCardGame
         /// 判斷玩家的手牌 是否為同花大順(10JQKA)
         /// </summary>
         /// <returns></returns>
-        public bool IsRoyalFlush(List<Card> Hand)
+        public bool IsRoyalFlush(Card[] Hand)
         {
-            if (Hand.Count != 5) return false;
+            if (Hand.Count() != 5) return false;
 
             // 數字是10, J, Q, K, A
             bool royal = Hand.Select(h => h.Value).All(new int[] { 10, 11, 12, 13, 1 }.Contains);
@@ -99,10 +97,10 @@ namespace PlayingCardGame
         /// 判斷玩家的手牌 是否為同花順
         /// </summary>
         /// <returns></returns>
-        public bool IsStraightFlush(List<Card> Hand)
+        public bool IsStraightFlush(Card[] Hand)
         {
             if ( IsRoyalFlush(Hand) ) return false;
-            if (Hand.Count != 5) return false;
+            if (Hand.Count() != 5) return false;
 
             // 是同花
             bool flush = Hand.Select(c => c.Suit).Distinct().Count() == 1;
@@ -117,9 +115,9 @@ namespace PlayingCardGame
         /// 判斷玩家的手牌 是否為四條
         /// </summary>
         /// <returns></returns>
-        public bool IsFourOfAKind(List<Card> Hand)
+        public bool IsFourOfAKind(Card[] Hand)
         {
-            if (Hand.Count != 5) return false;
+            if (Hand.Count() != 5) return false;
 
             List<int> values = Hand.Select(c => c.Value).ToList();
 
@@ -139,9 +137,9 @@ namespace PlayingCardGame
         /// 判斷玩家的手牌 是否為葫蘆
         /// </summary>
         /// <returns></returns>
-        public bool IsFullHouse(List<Card> Hand)
+        public bool IsFullHouse(Card[] Hand)
         {
-            if (Hand.Count != 5) return false;
+            if (Hand.Count() != 5) return false;
 
             List<int> values = Hand.Select(c => c.Value).ToList();
 
@@ -161,10 +159,10 @@ namespace PlayingCardGame
         /// 判斷玩家的手牌 是否為同花
         /// </summary>
         /// <returns></returns>
-        public bool IsFlush(List<Card> Hand)
+        public bool IsFlush(Card[] Hand)
         {
             if ( Hand.Are5StraightCards() ) return false;
-            if (Hand.Count != 5) return false;
+            if (Hand.Count() != 5) return false;
 
             // 所有牌花色相同
             bool flush = Hand.Select(c => c.Suit).Distinct().Count() == 1;
@@ -176,11 +174,11 @@ namespace PlayingCardGame
         /// 判斷玩家的手牌 是否為順子
         /// </summary>
         /// <returns></returns>
-        public bool IsStraight(List<Card> Hand)
+        public bool IsStraight(Card[] Hand)
         {
             bool flush = Hand.Select(c => c.Suit).Distinct().Count() == 1;
             if (flush) return false;
-            //if (Hand.Count != 5) return false;
+            //if (Hand.Count() != 5) return false;
 
             return Hand.Are5StraightCards();
         }
@@ -189,9 +187,9 @@ namespace PlayingCardGame
         /// 判斷玩家的手牌 是否為三條
         /// </summary>
         /// <returns></returns>
-        public bool IsThreeOfAKind(List<Card> Hand)
+        public bool IsThreeOfAKind(Card[] Hand)
         {
-            if (Hand.Count != 5) return false;
+            if (Hand.Count() != 5) return false;
 
             List<int> values = Hand.Select(c => c.Value).ToList();
 
@@ -211,9 +209,9 @@ namespace PlayingCardGame
         /// 判斷玩家的手牌 是否為兩對
         /// </summary>
         /// <returns></returns>
-        public bool IsTwoPair(List<Card> Hand)
+        public bool IsTwoPair(Card[] Hand)
         {
-            if (Hand.Count != 5) return false;
+            if (Hand.Count() != 5) return false;
 
             List<int> values = Hand.Select(c => c.Value).ToList();
 
@@ -233,9 +231,9 @@ namespace PlayingCardGame
         /// 判斷玩家的手牌 是否為一對
         /// </summary>
         /// <returns></returns>
-        public bool IsPair(List<Card> Hand)
+        public bool IsPair(Card[] Hand)
         {
-            if (Hand.Count != 5) return false;
+            if (Hand.Count() != 5) return false;
 
             List<int> values = Hand.Select(c => c.Value).ToList();
 
@@ -255,9 +253,9 @@ namespace PlayingCardGame
         /// 判斷玩家的手牌 是否為單張
         /// </summary>
         /// <returns></returns>
-        public bool IsHighCard(List<Card> Hand)
+        public bool IsHighCard(Card[] Hand)
         {
-            if (Hand.Count != 5) return false;
+            if (Hand.Count() != 5) return false;
 
             // 數字必須皆不相同
             if ( Hand.Select(c => c.Value).Distinct().Count() != 5 ) return false;

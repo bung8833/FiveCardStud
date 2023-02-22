@@ -23,1061 +23,1061 @@ namespace PlayingCardGame.UnitTests
 
 
         [Test, TestCaseSource(nameof(IsRoyalFlushCases))]
-        public bool IsRoyalFlush_ㄏノTestCaseSource代刚(List<Card> hand)
+        public bool IsRoyalFlush_ㄏノTestCaseSource代刚(Card[] hand)
         {
             return new FiveCardStud().IsRoyalFlush(hand);
         }
         static object[] IsRoyalFlushCases =
         {
-            new TestCaseData( new List<Card> {new Card(Suits.h, 10),
-                                              new Card(Suits.h, 11),
-                                              new Card(Suits.h, 12),
-                                              new Card(Suits.h, 13),
-                                              new Card(Suits.h,  1),} ).Returns(true), // RoyalFlush
+            new TestCaseData( new Card[] {new Card(Suits.H, 10),
+                                              new Card(Suits.H, 11),
+                                              new Card(Suits.H, 12),
+                                              new Card(Suits.H, 13),
+                                              new Card(Suits.H,  1),} ).Returns(true), // RoyalFlush
 
-            new TestCaseData( new List<Card> {new Card(Suits.s, 10),
-                                              new Card(Suits.s, 11),
-                                              new Card(Suits.s, 12),
-                                              new Card(Suits.s, 13),
-                                              new Card(Suits.s,  1),} ).Returns(true), // RoyalFlush
+            new TestCaseData( new Card[] {new Card(Suits.S, 10),
+                                              new Card(Suits.S, 11),
+                                              new Card(Suits.S, 12),
+                                              new Card(Suits.S, 13),
+                                              new Card(Suits.S,  1),} ).Returns(true), // RoyalFlush
 
-            new TestCaseData( new List<Card> {new Card(Suits.s,  8),
-                                              new Card(Suits.s,  9),
-                                              new Card(Suits.s, 10),
-                                              new Card(Suits.s,  7),
-                                              new Card(Suits.s, 11),} ).Returns(false), // StraightFlush
+            new TestCaseData( new Card[] {new Card(Suits.S,  8),
+                                              new Card(Suits.S,  9),
+                                              new Card(Suits.S, 10),
+                                              new Card(Suits.S,  7),
+                                              new Card(Suits.S, 11),} ).Returns(false), // StraightFlush
 
-            new TestCaseData( new List<Card> {new Card(Suits.h,  1),
-                                              new Card(Suits.h,  2),
-                                              new Card(Suits.h,  3),
-                                              new Card(Suits.h,  4),
-                                              new Card(Suits.h,  5),} ).Returns(false), // StraightFlush
+            new TestCaseData( new Card[] {new Card(Suits.H,  1),
+                                              new Card(Suits.H,  2),
+                                              new Card(Suits.H,  3),
+                                              new Card(Suits.H,  4),
+                                              new Card(Suits.H,  5),} ).Returns(false), // StraightFlush
 
-            new TestCaseData( new List<Card> {new Card(Suits.s,  8),
-                                              new Card(Suits.h,  9),
-                                              new Card(Suits.c, 10),
-                                              new Card(Suits.d, 11),
-                                              new Card(Suits.s, 12),} ).Returns(false), // Straight
+            new TestCaseData( new Card[] {new Card(Suits.S,  8),
+                                              new Card(Suits.H,  9),
+                                              new Card(Suits.C, 10),
+                                              new Card(Suits.D, 11),
+                                              new Card(Suits.S, 12),} ).Returns(false), // Straight
 
-            new TestCaseData( new List<Card> {new Card(Suits.s, 10),
-                                              new Card(Suits.h, 11),
-                                              new Card(Suits.c, 12),
-                                              new Card(Suits.d, 13),
-                                              new Card(Suits.s,  1),} ).Returns(false), // Straight
+            new TestCaseData( new Card[] {new Card(Suits.S, 10),
+                                              new Card(Suits.H, 11),
+                                              new Card(Suits.C, 12),
+                                              new Card(Suits.D, 13),
+                                              new Card(Suits.S,  1),} ).Returns(false), // Straight
 
-            new TestCaseData( new List<Card> {new Card(Suits.h,  1),
-                                              new Card(Suits.h,  2),
-                                              new Card(Suits.h,  3),
-                                              new Card(Suits.h,  4),
-                                              new Card(Suits.c,  5),} ).Returns(false), // Straight
+            new TestCaseData( new Card[] {new Card(Suits.H,  1),
+                                              new Card(Suits.H,  2),
+                                              new Card(Suits.H,  3),
+                                              new Card(Suits.H,  4),
+                                              new Card(Suits.C,  5),} ).Returns(false), // Straight
 
-            new TestCaseData( new List<Card> {new Card(Suits.h,  6),
-                                              new Card(Suits.h,  2),
-                                              new Card(Suits.h,  3),
-                                              new Card(Suits.h,  4),
-                                              new Card(Suits.c,  5),} ).Returns(false), // Straight
+            new TestCaseData( new Card[] {new Card(Suits.H,  6),
+                                              new Card(Suits.H,  2),
+                                              new Card(Suits.H,  3),
+                                              new Card(Suits.H,  4),
+                                              new Card(Suits.C,  5),} ).Returns(false), // Straight
 
-            new TestCaseData( new List<Card> {new Card(Suits.h,  6),
-                                              new Card(Suits.h, 13),
-                                              new Card(Suits.h, 12),
-                                              new Card(Suits.h, 11),
-                                              new Card(Suits.h, 10),} ).Returns(false), // Flush
+            new TestCaseData( new Card[] {new Card(Suits.H,  6),
+                                              new Card(Suits.H, 13),
+                                              new Card(Suits.H, 12),
+                                              new Card(Suits.H, 11),
+                                              new Card(Suits.H, 10),} ).Returns(false), // Flush
 
-            new TestCaseData( new List<Card> {new Card(Suits.c,  2),
-                                              new Card(Suits.c,  3),
-                                              new Card(Suits.c,  4),
-                                              new Card(Suits.c,  5),
-                                              new Card(Suits.c,  7),} ).Returns(false), // Flush
+            new TestCaseData( new Card[] {new Card(Suits.C,  2),
+                                              new Card(Suits.C,  3),
+                                              new Card(Suits.C,  4),
+                                              new Card(Suits.C,  5),
+                                              new Card(Suits.C,  7),} ).Returns(false), // Flush
 
-            new TestCaseData( new List<Card> {new Card(Suits.h,  3),
-                                              new Card(Suits.s,  3),
-                                              new Card(Suits.d,  3),
-                                              new Card(Suits.c,  3),
-                                              new Card(Suits.c,  4),} ).Returns(false), // FourOfAKind
+            new TestCaseData( new Card[] {new Card(Suits.H,  3),
+                                              new Card(Suits.S,  3),
+                                              new Card(Suits.D,  3),
+                                              new Card(Suits.C,  3),
+                                              new Card(Suits.C,  4),} ).Returns(false), // FourOfAKind
 
-            new TestCaseData( new List<Card> {new Card(Suits.h,  3),
-                                              new Card(Suits.s,  3),
-                                              new Card(Suits.d,  3),
-                                              new Card(Suits.c,  4),
-                                              new Card(Suits.c,  5),} ).Returns(false), // ThreeOfAKind
+            new TestCaseData( new Card[] {new Card(Suits.H,  3),
+                                              new Card(Suits.S,  3),
+                                              new Card(Suits.D,  3),
+                                              new Card(Suits.C,  4),
+                                              new Card(Suits.C,  5),} ).Returns(false), // ThreeOfAKind
 
-            new TestCaseData( new List<Card> {new Card(Suits.h,  6),
-                                              new Card(Suits.s,  6),
-                                              new Card(Suits.d,  6),
-                                              new Card(Suits.h,  7),
-                                              new Card(Suits.c,  7),} ).Returns(false), // FullHouse
+            new TestCaseData( new Card[] {new Card(Suits.H,  6),
+                                              new Card(Suits.S,  6),
+                                              new Card(Suits.D,  6),
+                                              new Card(Suits.H,  7),
+                                              new Card(Suits.C,  7),} ).Returns(false), // FullHouse
 
-            new TestCaseData( new List<Card> {new Card(Suits.h,  5),
-                                              new Card(Suits.s,  6),
-                                              new Card(Suits.d,  6),
-                                              new Card(Suits.h,  7),
-                                              new Card(Suits.c,  7),} ).Returns(false), // TwoPair
+            new TestCaseData( new Card[] {new Card(Suits.H,  5),
+                                              new Card(Suits.S,  6),
+                                              new Card(Suits.D,  6),
+                                              new Card(Suits.H,  7),
+                                              new Card(Suits.C,  7),} ).Returns(false), // TwoPair
 
-            new TestCaseData( new List<Card> {new Card(Suits.h,  4),
-                                              new Card(Suits.h,  5),
-                                              new Card(Suits.h,  6),
-                                              new Card(Suits.h,  7),
-                                              new Card(Suits.c,  7),} ).Returns(false), // Pair
+            new TestCaseData( new Card[] {new Card(Suits.H,  4),
+                                              new Card(Suits.H,  5),
+                                              new Card(Suits.H,  6),
+                                              new Card(Suits.H,  7),
+                                              new Card(Suits.C,  7),} ).Returns(false), // Pair
 
-            new TestCaseData( new List<Card> {new Card(Suits.h,  4),
-                                              new Card(Suits.h,  5),
-                                              new Card(Suits.h,  6),
-                                              new Card(Suits.h,  7),
-                                              new Card(Suits.c,  9),} ).Returns(false), // HighCard
+            new TestCaseData( new Card[] {new Card(Suits.H,  4),
+                                              new Card(Suits.H,  5),
+                                              new Card(Suits.H,  6),
+                                              new Card(Suits.H,  7),
+                                              new Card(Suits.C,  9),} ).Returns(false), // HighCard
         };
 
 
 
         [Test, TestCaseSource(nameof(IsStraightFlushCases))]
-        public bool IsStraightFlush_ㄏノTestCaseSource代刚(List<Card> hand)
+        public bool IsStraightFlush_ㄏノTestCaseSource代刚(Card[] hand)
         {
             return new FiveCardStud().IsStraightFlush(hand);
         }
         static object[] IsStraightFlushCases =
         {
-            new TestCaseData( new List<Card> {new Card(Suits.h, 10),
-                                              new Card(Suits.h, 11),
-                                              new Card(Suits.h, 12),
-                                              new Card(Suits.h, 13),
-                                              new Card(Suits.h,  1),} ).Returns(false), // RoyalFlush
+            new TestCaseData( new Card[] {new Card(Suits.H, 10),
+                                              new Card(Suits.H, 11),
+                                              new Card(Suits.H, 12),
+                                              new Card(Suits.H, 13),
+                                              new Card(Suits.H,  1),} ).Returns(false), // RoyalFlush
 
-            new TestCaseData( new List<Card> {new Card(Suits.s, 10),
-                                              new Card(Suits.s, 11),
-                                              new Card(Suits.s, 12),
-                                              new Card(Suits.s, 13),
-                                              new Card(Suits.s,  1),} ).Returns(false), // RoyalFlush
+            new TestCaseData( new Card[] {new Card(Suits.S, 10),
+                                              new Card(Suits.S, 11),
+                                              new Card(Suits.S, 12),
+                                              new Card(Suits.S, 13),
+                                              new Card(Suits.S,  1),} ).Returns(false), // RoyalFlush
 
-            new TestCaseData( new List<Card> {new Card(Suits.s,  8),
-                                              new Card(Suits.s,  9),
-                                              new Card(Suits.s, 10),
-                                              new Card(Suits.s,  7),
-                                              new Card(Suits.s, 11),} ).Returns(true), // StraightFlush
+            new TestCaseData( new Card[] {new Card(Suits.S,  8),
+                                              new Card(Suits.S,  9),
+                                              new Card(Suits.S, 10),
+                                              new Card(Suits.S,  7),
+                                              new Card(Suits.S, 11),} ).Returns(true), // StraightFlush
 
-            new TestCaseData( new List<Card> {new Card(Suits.h,  1),
-                                              new Card(Suits.h,  2),
-                                              new Card(Suits.h,  3),
-                                              new Card(Suits.h,  4),
-                                              new Card(Suits.h,  5),} ).Returns(true), // StraightFlush
+            new TestCaseData( new Card[] {new Card(Suits.H,  1),
+                                              new Card(Suits.H,  2),
+                                              new Card(Suits.H,  3),
+                                              new Card(Suits.H,  4),
+                                              new Card(Suits.H,  5),} ).Returns(true), // StraightFlush
 
-            new TestCaseData( new List<Card> {new Card(Suits.s,  8),
-                                              new Card(Suits.h,  9),
-                                              new Card(Suits.c, 10),
-                                              new Card(Suits.d, 11),
-                                              new Card(Suits.s, 12),} ).Returns(false), // Straight
+            new TestCaseData( new Card[] {new Card(Suits.S,  8),
+                                              new Card(Suits.H,  9),
+                                              new Card(Suits.C, 10),
+                                              new Card(Suits.D, 11),
+                                              new Card(Suits.S, 12),} ).Returns(false), // Straight
 
-            new TestCaseData( new List<Card> {new Card(Suits.s, 10),
-                                              new Card(Suits.h, 11),
-                                              new Card(Suits.c, 12),
-                                              new Card(Suits.d, 13),
-                                              new Card(Suits.s,  1),} ).Returns(false), // Straight
+            new TestCaseData( new Card[] {new Card(Suits.S, 10),
+                                              new Card(Suits.H, 11),
+                                              new Card(Suits.C, 12),
+                                              new Card(Suits.D, 13),
+                                              new Card(Suits.S,  1),} ).Returns(false), // Straight
 
-            new TestCaseData( new List<Card> {new Card(Suits.h,  1),
-                                              new Card(Suits.h,  2),
-                                              new Card(Suits.h,  3),
-                                              new Card(Suits.h,  4),
-                                              new Card(Suits.c,  5),} ).Returns(false), // Straight
+            new TestCaseData( new Card[] {new Card(Suits.H,  1),
+                                              new Card(Suits.H,  2),
+                                              new Card(Suits.H,  3),
+                                              new Card(Suits.H,  4),
+                                              new Card(Suits.C,  5),} ).Returns(false), // Straight
 
-            new TestCaseData( new List<Card> {new Card(Suits.h,  6),
-                                              new Card(Suits.h,  2),
-                                              new Card(Suits.h,  3),
-                                              new Card(Suits.h,  4),
-                                              new Card(Suits.c,  5),} ).Returns(false), // Straight
+            new TestCaseData( new Card[] {new Card(Suits.H,  6),
+                                              new Card(Suits.H,  2),
+                                              new Card(Suits.H,  3),
+                                              new Card(Suits.H,  4),
+                                              new Card(Suits.C,  5),} ).Returns(false), // Straight
 
-            new TestCaseData( new List<Card> {new Card(Suits.h,  6),
-                                              new Card(Suits.h, 13),
-                                              new Card(Suits.h, 12),
-                                              new Card(Suits.h, 11),
-                                              new Card(Suits.h, 10),} ).Returns(false), // Flush
+            new TestCaseData( new Card[] {new Card(Suits.H,  6),
+                                              new Card(Suits.H, 13),
+                                              new Card(Suits.H, 12),
+                                              new Card(Suits.H, 11),
+                                              new Card(Suits.H, 10),} ).Returns(false), // Flush
 
-            new TestCaseData( new List<Card> {new Card(Suits.c,  2),
-                                              new Card(Suits.c,  3),
-                                              new Card(Suits.c,  4),
-                                              new Card(Suits.c,  5),
-                                              new Card(Suits.c,  7),} ).Returns(false), // Flush
+            new TestCaseData( new Card[] {new Card(Suits.C,  2),
+                                              new Card(Suits.C,  3),
+                                              new Card(Suits.C,  4),
+                                              new Card(Suits.C,  5),
+                                              new Card(Suits.C,  7),} ).Returns(false), // Flush
 
-            new TestCaseData( new List<Card> {new Card(Suits.h,  3),
-                                              new Card(Suits.s,  3),
-                                              new Card(Suits.d,  3),
-                                              new Card(Suits.c,  3),
-                                              new Card(Suits.c,  4),} ).Returns(false), // FourOfAKind
+            new TestCaseData( new Card[] {new Card(Suits.H,  3),
+                                              new Card(Suits.S,  3),
+                                              new Card(Suits.D,  3),
+                                              new Card(Suits.C,  3),
+                                              new Card(Suits.C,  4),} ).Returns(false), // FourOfAKind
 
-            new TestCaseData( new List<Card> {new Card(Suits.h,  3),
-                                              new Card(Suits.s,  3),
-                                              new Card(Suits.d,  3),
-                                              new Card(Suits.c,  4),
-                                              new Card(Suits.c,  5),} ).Returns(false), // ThreeOfAKind
+            new TestCaseData( new Card[] {new Card(Suits.H,  3),
+                                              new Card(Suits.S,  3),
+                                              new Card(Suits.D,  3),
+                                              new Card(Suits.C,  4),
+                                              new Card(Suits.C,  5),} ).Returns(false), // ThreeOfAKind
 
-            new TestCaseData( new List<Card> {new Card(Suits.h,  6),
-                                              new Card(Suits.s,  6),
-                                              new Card(Suits.d,  6),
-                                              new Card(Suits.h,  7),
-                                              new Card(Suits.c,  7),} ).Returns(false), // FullHouse
+            new TestCaseData( new Card[] {new Card(Suits.H,  6),
+                                              new Card(Suits.S,  6),
+                                              new Card(Suits.D,  6),
+                                              new Card(Suits.H,  7),
+                                              new Card(Suits.C,  7),} ).Returns(false), // FullHouse
 
-            new TestCaseData( new List<Card> {new Card(Suits.h,  5),
-                                              new Card(Suits.s,  6),
-                                              new Card(Suits.d,  6),
-                                              new Card(Suits.h,  7),
-                                              new Card(Suits.c,  7),} ).Returns(false), // TwoPair
+            new TestCaseData( new Card[] {new Card(Suits.H,  5),
+                                              new Card(Suits.S,  6),
+                                              new Card(Suits.D,  6),
+                                              new Card(Suits.H,  7),
+                                              new Card(Suits.C,  7),} ).Returns(false), // TwoPair
 
-            new TestCaseData( new List<Card> {new Card(Suits.h,  4),
-                                              new Card(Suits.h,  5),
-                                              new Card(Suits.h,  6),
-                                              new Card(Suits.h,  7),
-                                              new Card(Suits.c,  7),} ).Returns(false), // Pair
+            new TestCaseData( new Card[] {new Card(Suits.H,  4),
+                                              new Card(Suits.H,  5),
+                                              new Card(Suits.H,  6),
+                                              new Card(Suits.H,  7),
+                                              new Card(Suits.C,  7),} ).Returns(false), // Pair
 
-            new TestCaseData( new List<Card> {new Card(Suits.h,  4),
-                                              new Card(Suits.h,  5),
-                                              new Card(Suits.h,  6),
-                                              new Card(Suits.h,  7),
-                                              new Card(Suits.c,  9),} ).Returns(false), // HighCard
+            new TestCaseData( new Card[] {new Card(Suits.H,  4),
+                                              new Card(Suits.H,  5),
+                                              new Card(Suits.H,  6),
+                                              new Card(Suits.H,  7),
+                                              new Card(Suits.C,  9),} ).Returns(false), // HighCard
         };
 
 
 
         [Test, TestCaseSource(nameof(IsFourOfAKindCases))]
-        public bool IsFourOfAKind_ㄏノTestCaseSource代刚(List<Card> hand)
+        public bool IsFourOfAKind_ㄏノTestCaseSource代刚(Card[] hand)
         {
             return new FiveCardStud().IsFourOfAKind(hand);
         }
         static object[] IsFourOfAKindCases =
         {
-            new TestCaseData( new List<Card> {new Card(Suits.h, 10),
-                                              new Card(Suits.h, 11),
-                                              new Card(Suits.h, 12),
-                                              new Card(Suits.h, 13),
-                                              new Card(Suits.h,  1),} ).Returns(false), // RoyalFlush
+            new TestCaseData( new Card[] {new Card(Suits.H, 10),
+                                              new Card(Suits.H, 11),
+                                              new Card(Suits.H, 12),
+                                              new Card(Suits.H, 13),
+                                              new Card(Suits.H,  1),} ).Returns(false), // RoyalFlush
 
-            new TestCaseData( new List<Card> {new Card(Suits.s, 10),
-                                              new Card(Suits.s, 11),
-                                              new Card(Suits.s, 12),
-                                              new Card(Suits.s, 13),
-                                              new Card(Suits.s,  1),} ).Returns(false), // RoyalFlush
+            new TestCaseData( new Card[] {new Card(Suits.S, 10),
+                                              new Card(Suits.S, 11),
+                                              new Card(Suits.S, 12),
+                                              new Card(Suits.S, 13),
+                                              new Card(Suits.S,  1),} ).Returns(false), // RoyalFlush
 
-            new TestCaseData( new List<Card> {new Card(Suits.s,  8),
-                                              new Card(Suits.s,  9),
-                                              new Card(Suits.s, 10),
-                                              new Card(Suits.s,  7),
-                                              new Card(Suits.s, 11),} ).Returns(false), // StraightFlush
+            new TestCaseData( new Card[] {new Card(Suits.S,  8),
+                                              new Card(Suits.S,  9),
+                                              new Card(Suits.S, 10),
+                                              new Card(Suits.S,  7),
+                                              new Card(Suits.S, 11),} ).Returns(false), // StraightFlush
 
-            new TestCaseData( new List<Card> {new Card(Suits.h,  1),
-                                              new Card(Suits.h,  2),
-                                              new Card(Suits.h,  3),
-                                              new Card(Suits.h,  4),
-                                              new Card(Suits.h,  5),} ).Returns(false), // StraightFlush
+            new TestCaseData( new Card[] {new Card(Suits.H,  1),
+                                              new Card(Suits.H,  2),
+                                              new Card(Suits.H,  3),
+                                              new Card(Suits.H,  4),
+                                              new Card(Suits.H,  5),} ).Returns(false), // StraightFlush
 
-            new TestCaseData( new List<Card> {new Card(Suits.s,  8),
-                                              new Card(Suits.h,  9),
-                                              new Card(Suits.c, 10),
-                                              new Card(Suits.d, 11),
-                                              new Card(Suits.s, 12),} ).Returns(false), // Straight
+            new TestCaseData( new Card[] {new Card(Suits.S,  8),
+                                              new Card(Suits.H,  9),
+                                              new Card(Suits.C, 10),
+                                              new Card(Suits.D, 11),
+                                              new Card(Suits.S, 12),} ).Returns(false), // Straight
 
-            new TestCaseData( new List<Card> {new Card(Suits.s, 10),
-                                              new Card(Suits.h, 11),
-                                              new Card(Suits.c, 12),
-                                              new Card(Suits.d, 13),
-                                              new Card(Suits.s,  1),} ).Returns(false), // Straight
+            new TestCaseData( new Card[] {new Card(Suits.S, 10),
+                                              new Card(Suits.H, 11),
+                                              new Card(Suits.C, 12),
+                                              new Card(Suits.D, 13),
+                                              new Card(Suits.S,  1),} ).Returns(false), // Straight
 
-            new TestCaseData( new List<Card> {new Card(Suits.h,  1),
-                                              new Card(Suits.h,  2),
-                                              new Card(Suits.h,  3),
-                                              new Card(Suits.h,  4),
-                                              new Card(Suits.c,  5),} ).Returns(false), // Straight
+            new TestCaseData( new Card[] {new Card(Suits.H,  1),
+                                              new Card(Suits.H,  2),
+                                              new Card(Suits.H,  3),
+                                              new Card(Suits.H,  4),
+                                              new Card(Suits.C,  5),} ).Returns(false), // Straight
 
-            new TestCaseData( new List<Card> {new Card(Suits.h,  6),
-                                              new Card(Suits.h,  2),
-                                              new Card(Suits.h,  3),
-                                              new Card(Suits.h,  4),
-                                              new Card(Suits.c,  5),} ).Returns(false), // Straight
+            new TestCaseData( new Card[] {new Card(Suits.H,  6),
+                                              new Card(Suits.H,  2),
+                                              new Card(Suits.H,  3),
+                                              new Card(Suits.H,  4),
+                                              new Card(Suits.C,  5),} ).Returns(false), // Straight
 
-            new TestCaseData( new List<Card> {new Card(Suits.h,  6),
-                                              new Card(Suits.h, 13),
-                                              new Card(Suits.h, 12),
-                                              new Card(Suits.h, 11),
-                                              new Card(Suits.h, 10),} ).Returns(false), // Flush
+            new TestCaseData( new Card[] {new Card(Suits.H,  6),
+                                              new Card(Suits.H, 13),
+                                              new Card(Suits.H, 12),
+                                              new Card(Suits.H, 11),
+                                              new Card(Suits.H, 10),} ).Returns(false), // Flush
 
-            new TestCaseData( new List<Card> {new Card(Suits.c,  2),
-                                              new Card(Suits.c,  3),
-                                              new Card(Suits.c,  4),
-                                              new Card(Suits.c,  5),
-                                              new Card(Suits.c,  7),} ).Returns(false), // Flush
+            new TestCaseData( new Card[] {new Card(Suits.C,  2),
+                                              new Card(Suits.C,  3),
+                                              new Card(Suits.C,  4),
+                                              new Card(Suits.C,  5),
+                                              new Card(Suits.C,  7),} ).Returns(false), // Flush
 
-            new TestCaseData( new List<Card> {new Card(Suits.h,  3),
-                                              new Card(Suits.s,  3),
-                                              new Card(Suits.d,  3),
-                                              new Card(Suits.c,  3),
-                                              new Card(Suits.c,  4),} ).Returns(true), // FourOfAKind
+            new TestCaseData( new Card[] {new Card(Suits.H,  3),
+                                              new Card(Suits.S,  3),
+                                              new Card(Suits.D,  3),
+                                              new Card(Suits.C,  3),
+                                              new Card(Suits.C,  4),} ).Returns(true), // FourOfAKind
 
-            new TestCaseData( new List<Card> {new Card(Suits.h,  3),
-                                              new Card(Suits.s,  3),
-                                              new Card(Suits.d,  3),
-                                              new Card(Suits.c,  4),
-                                              new Card(Suits.c,  5),} ).Returns(false), // ThreeOfAKind
+            new TestCaseData( new Card[] {new Card(Suits.H,  3),
+                                              new Card(Suits.S,  3),
+                                              new Card(Suits.D,  3),
+                                              new Card(Suits.C,  4),
+                                              new Card(Suits.C,  5),} ).Returns(false), // ThreeOfAKind
 
-            new TestCaseData( new List<Card> {new Card(Suits.h,  6),
-                                              new Card(Suits.s,  6),
-                                              new Card(Suits.d,  6),
-                                              new Card(Suits.h,  7),
-                                              new Card(Suits.c,  7),} ).Returns(false), // FullHouse
+            new TestCaseData( new Card[] {new Card(Suits.H,  6),
+                                              new Card(Suits.S,  6),
+                                              new Card(Suits.D,  6),
+                                              new Card(Suits.H,  7),
+                                              new Card(Suits.C,  7),} ).Returns(false), // FullHouse
 
-            new TestCaseData( new List<Card> {new Card(Suits.h,  5),
-                                              new Card(Suits.s,  6),
-                                              new Card(Suits.d,  6),
-                                              new Card(Suits.h,  7),
-                                              new Card(Suits.c,  7),} ).Returns(false), // TwoPair
+            new TestCaseData( new Card[] {new Card(Suits.H,  5),
+                                              new Card(Suits.S,  6),
+                                              new Card(Suits.D,  6),
+                                              new Card(Suits.H,  7),
+                                              new Card(Suits.C,  7),} ).Returns(false), // TwoPair
 
-            new TestCaseData( new List<Card> {new Card(Suits.h,  4),
-                                              new Card(Suits.h,  5),
-                                              new Card(Suits.h,  6),
-                                              new Card(Suits.h,  7),
-                                              new Card(Suits.c,  7),} ).Returns(false), // Pair
+            new TestCaseData( new Card[] {new Card(Suits.H,  4),
+                                              new Card(Suits.H,  5),
+                                              new Card(Suits.H,  6),
+                                              new Card(Suits.H,  7),
+                                              new Card(Suits.C,  7),} ).Returns(false), // Pair
 
-            new TestCaseData( new List<Card> {new Card(Suits.h,  4),
-                                              new Card(Suits.h,  5),
-                                              new Card(Suits.h,  6),
-                                              new Card(Suits.h,  7),
-                                              new Card(Suits.c,  9),} ).Returns(false), // HighCard
+            new TestCaseData( new Card[] {new Card(Suits.H,  4),
+                                              new Card(Suits.H,  5),
+                                              new Card(Suits.H,  6),
+                                              new Card(Suits.H,  7),
+                                              new Card(Suits.C,  9),} ).Returns(false), // HighCard
         };
 
 
 
         [Test, TestCaseSource(nameof(IsFullHouseCases))]
-        public bool IsFullHouse_ㄏノTestCaseSource代刚(List<Card> hand)
+        public bool IsFullHouse_ㄏノTestCaseSource代刚(Card[] hand)
         {
             return new FiveCardStud().IsFullHouse(hand);
         }
         static object[] IsFullHouseCases =
         {
-            new TestCaseData( new List<Card> {new Card(Suits.h, 10),
-                                              new Card(Suits.h, 11),
-                                              new Card(Suits.h, 12),
-                                              new Card(Suits.h, 13),
-                                              new Card(Suits.h,  1),} ).Returns(false), // RoyalFlush
+            new TestCaseData( new Card[] {new Card(Suits.H, 10),
+                                              new Card(Suits.H, 11),
+                                              new Card(Suits.H, 12),
+                                              new Card(Suits.H, 13),
+                                              new Card(Suits.H,  1),} ).Returns(false), // RoyalFlush
 
-            new TestCaseData( new List<Card> {new Card(Suits.s, 10),
-                                              new Card(Suits.s, 11),
-                                              new Card(Suits.s, 12),
-                                              new Card(Suits.s, 13),
-                                              new Card(Suits.s,  1),} ).Returns(false), // RoyalFlush
+            new TestCaseData( new Card[] {new Card(Suits.S, 10),
+                                              new Card(Suits.S, 11),
+                                              new Card(Suits.S, 12),
+                                              new Card(Suits.S, 13),
+                                              new Card(Suits.S,  1),} ).Returns(false), // RoyalFlush
 
-            new TestCaseData( new List<Card> {new Card(Suits.s,  8),
-                                              new Card(Suits.s,  9),
-                                              new Card(Suits.s, 10),
-                                              new Card(Suits.s,  7),
-                                              new Card(Suits.s, 11),} ).Returns(false), // StraightFlush
+            new TestCaseData( new Card[] {new Card(Suits.S,  8),
+                                              new Card(Suits.S,  9),
+                                              new Card(Suits.S, 10),
+                                              new Card(Suits.S,  7),
+                                              new Card(Suits.S, 11),} ).Returns(false), // StraightFlush
 
-            new TestCaseData( new List<Card> {new Card(Suits.h,  1),
-                                              new Card(Suits.h,  2),
-                                              new Card(Suits.h,  3),
-                                              new Card(Suits.h,  4),
-                                              new Card(Suits.h,  5),} ).Returns(false), // StraightFlush
+            new TestCaseData( new Card[] {new Card(Suits.H,  1),
+                                              new Card(Suits.H,  2),
+                                              new Card(Suits.H,  3),
+                                              new Card(Suits.H,  4),
+                                              new Card(Suits.H,  5),} ).Returns(false), // StraightFlush
 
-            new TestCaseData( new List<Card> {new Card(Suits.s,  8),
-                                              new Card(Suits.h,  9),
-                                              new Card(Suits.c, 10),
-                                              new Card(Suits.d, 11),
-                                              new Card(Suits.s, 12),} ).Returns(false), // Straight
+            new TestCaseData( new Card[] {new Card(Suits.S,  8),
+                                              new Card(Suits.H,  9),
+                                              new Card(Suits.C, 10),
+                                              new Card(Suits.D, 11),
+                                              new Card(Suits.S, 12),} ).Returns(false), // Straight
 
-            new TestCaseData( new List<Card> {new Card(Suits.s, 10),
-                                              new Card(Suits.h, 11),
-                                              new Card(Suits.c, 12),
-                                              new Card(Suits.d, 13),
-                                              new Card(Suits.s,  1),} ).Returns(false), // Straight
+            new TestCaseData( new Card[] {new Card(Suits.S, 10),
+                                              new Card(Suits.H, 11),
+                                              new Card(Suits.C, 12),
+                                              new Card(Suits.D, 13),
+                                              new Card(Suits.S,  1),} ).Returns(false), // Straight
 
-            new TestCaseData( new List<Card> {new Card(Suits.h,  1),
-                                              new Card(Suits.h,  2),
-                                              new Card(Suits.h,  3),
-                                              new Card(Suits.h,  4),
-                                              new Card(Suits.c,  5),} ).Returns(false), // Straight
+            new TestCaseData( new Card[] {new Card(Suits.H,  1),
+                                              new Card(Suits.H,  2),
+                                              new Card(Suits.H,  3),
+                                              new Card(Suits.H,  4),
+                                              new Card(Suits.C,  5),} ).Returns(false), // Straight
 
-            new TestCaseData( new List<Card> {new Card(Suits.h,  6),
-                                              new Card(Suits.h,  2),
-                                              new Card(Suits.h,  3),
-                                              new Card(Suits.h,  4),
-                                              new Card(Suits.c,  5),} ).Returns(false), // Straight
+            new TestCaseData( new Card[] {new Card(Suits.H,  6),
+                                              new Card(Suits.H,  2),
+                                              new Card(Suits.H,  3),
+                                              new Card(Suits.H,  4),
+                                              new Card(Suits.C,  5),} ).Returns(false), // Straight
 
-            new TestCaseData( new List<Card> {new Card(Suits.h,  6),
-                                              new Card(Suits.h, 13),
-                                              new Card(Suits.h, 12),
-                                              new Card(Suits.h, 11),
-                                              new Card(Suits.h, 10),} ).Returns(false), // Flush
+            new TestCaseData( new Card[] {new Card(Suits.H,  6),
+                                              new Card(Suits.H, 13),
+                                              new Card(Suits.H, 12),
+                                              new Card(Suits.H, 11),
+                                              new Card(Suits.H, 10),} ).Returns(false), // Flush
 
-            new TestCaseData( new List<Card> {new Card(Suits.c,  2),
-                                              new Card(Suits.c,  3),
-                                              new Card(Suits.c,  4),
-                                              new Card(Suits.c,  5),
-                                              new Card(Suits.c,  7),} ).Returns(false), // Flush
+            new TestCaseData( new Card[] {new Card(Suits.C,  2),
+                                              new Card(Suits.C,  3),
+                                              new Card(Suits.C,  4),
+                                              new Card(Suits.C,  5),
+                                              new Card(Suits.C,  7),} ).Returns(false), // Flush
 
-            new TestCaseData( new List<Card> {new Card(Suits.h,  3),
-                                              new Card(Suits.s,  3),
-                                              new Card(Suits.d,  3),
-                                              new Card(Suits.c,  3),
-                                              new Card(Suits.c,  4),} ).Returns(false), // FourOfAKind
+            new TestCaseData( new Card[] {new Card(Suits.H,  3),
+                                              new Card(Suits.S,  3),
+                                              new Card(Suits.D,  3),
+                                              new Card(Suits.C,  3),
+                                              new Card(Suits.C,  4),} ).Returns(false), // FourOfAKind
 
-            new TestCaseData( new List<Card> {new Card(Suits.h,  3),
-                                              new Card(Suits.s,  3),
-                                              new Card(Suits.d,  3),
-                                              new Card(Suits.c,  4),
-                                              new Card(Suits.c,  5),} ).Returns(false), // ThreeOfAKind
+            new TestCaseData( new Card[] {new Card(Suits.H,  3),
+                                              new Card(Suits.S,  3),
+                                              new Card(Suits.D,  3),
+                                              new Card(Suits.C,  4),
+                                              new Card(Suits.C,  5),} ).Returns(false), // ThreeOfAKind
 
-            new TestCaseData( new List<Card> {new Card(Suits.h,  6),
-                                              new Card(Suits.s,  6),
-                                              new Card(Suits.d,  6),
-                                              new Card(Suits.h,  7),
-                                              new Card(Suits.c,  7),} ).Returns(true), // FullHouse
+            new TestCaseData( new Card[] {new Card(Suits.H,  6),
+                                              new Card(Suits.S,  6),
+                                              new Card(Suits.D,  6),
+                                              new Card(Suits.H,  7),
+                                              new Card(Suits.C,  7),} ).Returns(true), // FullHouse
 
-            new TestCaseData( new List<Card> {new Card(Suits.h,  5),
-                                              new Card(Suits.s,  6),
-                                              new Card(Suits.d,  6),
-                                              new Card(Suits.h,  7),
-                                              new Card(Suits.c,  7),} ).Returns(false), // TwoPair
+            new TestCaseData( new Card[] {new Card(Suits.H,  5),
+                                              new Card(Suits.S,  6),
+                                              new Card(Suits.D,  6),
+                                              new Card(Suits.H,  7),
+                                              new Card(Suits.C,  7),} ).Returns(false), // TwoPair
 
-            new TestCaseData( new List<Card> {new Card(Suits.h,  4),
-                                              new Card(Suits.h,  5),
-                                              new Card(Suits.h,  6),
-                                              new Card(Suits.h,  7),
-                                              new Card(Suits.c,  7),} ).Returns(false), // Pair
+            new TestCaseData( new Card[] {new Card(Suits.H,  4),
+                                              new Card(Suits.H,  5),
+                                              new Card(Suits.H,  6),
+                                              new Card(Suits.H,  7),
+                                              new Card(Suits.C,  7),} ).Returns(false), // Pair
 
-            new TestCaseData( new List<Card> {new Card(Suits.h,  4),
-                                              new Card(Suits.h,  5),
-                                              new Card(Suits.h,  6),
-                                              new Card(Suits.h,  7),
-                                              new Card(Suits.c,  9),} ).Returns(false), // HighCard
+            new TestCaseData( new Card[] {new Card(Suits.H,  4),
+                                              new Card(Suits.H,  5),
+                                              new Card(Suits.H,  6),
+                                              new Card(Suits.H,  7),
+                                              new Card(Suits.C,  9),} ).Returns(false), // HighCard
         };
 
 
 
         [Test, TestCaseSource(nameof(IsFlushCases))]
-        public bool IsFlush_ㄏノTestCaseSource代刚(List<Card> hand)
+        public bool IsFlush_ㄏノTestCaseSource代刚(Card[] hand)
         {
             return new FiveCardStud().IsFlush(hand);
         }
         static object[] IsFlushCases =
         {
-            new TestCaseData( new List<Card> {new Card(Suits.h, 10),
-                                              new Card(Suits.h, 11),
-                                              new Card(Suits.h, 12),
-                                              new Card(Suits.h, 13),
-                                              new Card(Suits.h,  1),} ).Returns(false), // RoyalFlush
+            new TestCaseData( new Card[] {new Card(Suits.H, 10),
+                                              new Card(Suits.H, 11),
+                                              new Card(Suits.H, 12),
+                                              new Card(Suits.H, 13),
+                                              new Card(Suits.H,  1),} ).Returns(false), // RoyalFlush
 
-            new TestCaseData( new List<Card> {new Card(Suits.s, 10),
-                                              new Card(Suits.s, 11),
-                                              new Card(Suits.s, 12),
-                                              new Card(Suits.s, 13),
-                                              new Card(Suits.s,  1),} ).Returns(false), // RoyalFlush
+            new TestCaseData( new Card[] {new Card(Suits.S, 10),
+                                              new Card(Suits.S, 11),
+                                              new Card(Suits.S, 12),
+                                              new Card(Suits.S, 13),
+                                              new Card(Suits.S,  1),} ).Returns(false), // RoyalFlush
 
-            new TestCaseData( new List<Card> {new Card(Suits.s,  8),
-                                              new Card(Suits.s,  9),
-                                              new Card(Suits.s, 10),
-                                              new Card(Suits.s,  7),
-                                              new Card(Suits.s, 11),} ).Returns(false), // StraightFlush
+            new TestCaseData( new Card[] {new Card(Suits.S,  8),
+                                              new Card(Suits.S,  9),
+                                              new Card(Suits.S, 10),
+                                              new Card(Suits.S,  7),
+                                              new Card(Suits.S, 11),} ).Returns(false), // StraightFlush
 
-            new TestCaseData( new List<Card> {new Card(Suits.h,  1),
-                                              new Card(Suits.h,  2),
-                                              new Card(Suits.h,  3),
-                                              new Card(Suits.h,  4),
-                                              new Card(Suits.h,  5),} ).Returns(false), // StraightFlush
+            new TestCaseData( new Card[] {new Card(Suits.H,  1),
+                                              new Card(Suits.H,  2),
+                                              new Card(Suits.H,  3),
+                                              new Card(Suits.H,  4),
+                                              new Card(Suits.H,  5),} ).Returns(false), // StraightFlush
 
-            new TestCaseData( new List<Card> {new Card(Suits.s,  8),
-                                              new Card(Suits.h,  9),
-                                              new Card(Suits.c, 10),
-                                              new Card(Suits.d, 11),
-                                              new Card(Suits.s, 12),} ).Returns(false), // Straight
+            new TestCaseData( new Card[] {new Card(Suits.S,  8),
+                                              new Card(Suits.H,  9),
+                                              new Card(Suits.C, 10),
+                                              new Card(Suits.D, 11),
+                                              new Card(Suits.S, 12),} ).Returns(false), // Straight
 
-            new TestCaseData( new List<Card> {new Card(Suits.s, 10),
-                                              new Card(Suits.h, 11),
-                                              new Card(Suits.c, 12),
-                                              new Card(Suits.d, 13),
-                                              new Card(Suits.s,  1),} ).Returns(false), // Straight
+            new TestCaseData( new Card[] {new Card(Suits.S, 10),
+                                              new Card(Suits.H, 11),
+                                              new Card(Suits.C, 12),
+                                              new Card(Suits.D, 13),
+                                              new Card(Suits.S,  1),} ).Returns(false), // Straight
 
-            new TestCaseData( new List<Card> {new Card(Suits.h,  1),
-                                              new Card(Suits.h,  2),
-                                              new Card(Suits.h,  3),
-                                              new Card(Suits.h,  4),
-                                              new Card(Suits.c,  5),} ).Returns(false), // Straight
+            new TestCaseData( new Card[] {new Card(Suits.H,  1),
+                                              new Card(Suits.H,  2),
+                                              new Card(Suits.H,  3),
+                                              new Card(Suits.H,  4),
+                                              new Card(Suits.C,  5),} ).Returns(false), // Straight
 
-            new TestCaseData( new List<Card> {new Card(Suits.h,  6),
-                                              new Card(Suits.h,  2),
-                                              new Card(Suits.h,  3),
-                                              new Card(Suits.h,  4),
-                                              new Card(Suits.c,  5),} ).Returns(false), // Straight
+            new TestCaseData( new Card[] {new Card(Suits.H,  6),
+                                              new Card(Suits.H,  2),
+                                              new Card(Suits.H,  3),
+                                              new Card(Suits.H,  4),
+                                              new Card(Suits.C,  5),} ).Returns(false), // Straight
 
-            new TestCaseData( new List<Card> {new Card(Suits.h,  6),
-                                              new Card(Suits.h, 13),
-                                              new Card(Suits.h, 12),
-                                              new Card(Suits.h, 11),
-                                              new Card(Suits.h, 10),} ).Returns(true), // Flush
+            new TestCaseData( new Card[] {new Card(Suits.H,  6),
+                                              new Card(Suits.H, 13),
+                                              new Card(Suits.H, 12),
+                                              new Card(Suits.H, 11),
+                                              new Card(Suits.H, 10),} ).Returns(true), // Flush
 
-            new TestCaseData( new List<Card> {new Card(Suits.c,  2),
-                                              new Card(Suits.c,  3),
-                                              new Card(Suits.c,  4),
-                                              new Card(Suits.c,  5),
-                                              new Card(Suits.c,  7),} ).Returns(true), // Flush
+            new TestCaseData( new Card[] {new Card(Suits.C,  2),
+                                              new Card(Suits.C,  3),
+                                              new Card(Suits.C,  4),
+                                              new Card(Suits.C,  5),
+                                              new Card(Suits.C,  7),} ).Returns(true), // Flush
 
-            new TestCaseData( new List<Card> {new Card(Suits.h,  3),
-                                              new Card(Suits.s,  3),
-                                              new Card(Suits.d,  3),
-                                              new Card(Suits.c,  3),
-                                              new Card(Suits.c,  4),} ).Returns(false), // FourOfAKind
+            new TestCaseData( new Card[] {new Card(Suits.H,  3),
+                                              new Card(Suits.S,  3),
+                                              new Card(Suits.D,  3),
+                                              new Card(Suits.C,  3),
+                                              new Card(Suits.C,  4),} ).Returns(false), // FourOfAKind
 
-            new TestCaseData( new List<Card> {new Card(Suits.h,  3),
-                                              new Card(Suits.s,  3),
-                                              new Card(Suits.d,  3),
-                                              new Card(Suits.c,  4),
-                                              new Card(Suits.c,  5),} ).Returns(false), // ThreeOfAKind
+            new TestCaseData( new Card[] {new Card(Suits.H,  3),
+                                              new Card(Suits.S,  3),
+                                              new Card(Suits.D,  3),
+                                              new Card(Suits.C,  4),
+                                              new Card(Suits.C,  5),} ).Returns(false), // ThreeOfAKind
 
-            new TestCaseData( new List<Card> {new Card(Suits.h,  6),
-                                              new Card(Suits.s,  6),
-                                              new Card(Suits.d,  6),
-                                              new Card(Suits.h,  7),
-                                              new Card(Suits.c,  7),} ).Returns(false), // FullHouse
+            new TestCaseData( new Card[] {new Card(Suits.H,  6),
+                                              new Card(Suits.S,  6),
+                                              new Card(Suits.D,  6),
+                                              new Card(Suits.H,  7),
+                                              new Card(Suits.C,  7),} ).Returns(false), // FullHouse
 
-            new TestCaseData( new List<Card> {new Card(Suits.h,  5),
-                                              new Card(Suits.s,  6),
-                                              new Card(Suits.d,  6),
-                                              new Card(Suits.h,  7),
-                                              new Card(Suits.c,  7),} ).Returns(false), // TwoPair
+            new TestCaseData( new Card[] {new Card(Suits.H,  5),
+                                              new Card(Suits.S,  6),
+                                              new Card(Suits.D,  6),
+                                              new Card(Suits.H,  7),
+                                              new Card(Suits.C,  7),} ).Returns(false), // TwoPair
 
-            new TestCaseData( new List<Card> {new Card(Suits.h,  4),
-                                              new Card(Suits.h,  5),
-                                              new Card(Suits.h,  6),
-                                              new Card(Suits.h,  7),
-                                              new Card(Suits.c,  7),} ).Returns(false), // Pair
+            new TestCaseData( new Card[] {new Card(Suits.H,  4),
+                                              new Card(Suits.H,  5),
+                                              new Card(Suits.H,  6),
+                                              new Card(Suits.H,  7),
+                                              new Card(Suits.C,  7),} ).Returns(false), // Pair
 
-            new TestCaseData( new List<Card> {new Card(Suits.h,  4),
-                                              new Card(Suits.h,  5),
-                                              new Card(Suits.h,  6),
-                                              new Card(Suits.h,  7),
-                                              new Card(Suits.c,  9),} ).Returns(false), // HighCard
+            new TestCaseData( new Card[] {new Card(Suits.H,  4),
+                                              new Card(Suits.H,  5),
+                                              new Card(Suits.H,  6),
+                                              new Card(Suits.H,  7),
+                                              new Card(Suits.C,  9),} ).Returns(false), // HighCard
         };
 
 
 
         [Test, TestCaseSource(nameof(IsStraightCases))]
-        public bool IsStraight_ㄏノTestCaseSource代刚(List<Card> hand)
+        public bool IsStraight_ㄏノTestCaseSource代刚(Card[] hand)
         {
             return new FiveCardStud().IsStraight(hand);
         }
         static object[] IsStraightCases =
         {
-            new TestCaseData( new List<Card> {new Card(Suits.h, 10),
-                                              new Card(Suits.h, 11),
-                                              new Card(Suits.h, 12),
-                                              new Card(Suits.h, 13),
-                                              new Card(Suits.h,  1),} ).Returns(false), // RoyalFlush
+            new TestCaseData( new Card[] {new Card(Suits.H, 10),
+                                              new Card(Suits.H, 11),
+                                              new Card(Suits.H, 12),
+                                              new Card(Suits.H, 13),
+                                              new Card(Suits.H,  1),} ).Returns(false), // RoyalFlush
 
-            new TestCaseData( new List<Card> {new Card(Suits.s, 10),
-                                              new Card(Suits.s, 11),
-                                              new Card(Suits.s, 12),
-                                              new Card(Suits.s, 13),
-                                              new Card(Suits.s,  1),} ).Returns(false), // RoyalFlush
+            new TestCaseData( new Card[] {new Card(Suits.S, 10),
+                                              new Card(Suits.S, 11),
+                                              new Card(Suits.S, 12),
+                                              new Card(Suits.S, 13),
+                                              new Card(Suits.S,  1),} ).Returns(false), // RoyalFlush
 
-            new TestCaseData( new List<Card> {new Card(Suits.s,  8),
-                                              new Card(Suits.s,  9),
-                                              new Card(Suits.s, 10),
-                                              new Card(Suits.s,  7),
-                                              new Card(Suits.s, 11),} ).Returns(false), // StraightFlush
+            new TestCaseData( new Card[] {new Card(Suits.S,  8),
+                                              new Card(Suits.S,  9),
+                                              new Card(Suits.S, 10),
+                                              new Card(Suits.S,  7),
+                                              new Card(Suits.S, 11),} ).Returns(false), // StraightFlush
 
-            new TestCaseData( new List<Card> {new Card(Suits.h,  1),
-                                              new Card(Suits.h,  2),
-                                              new Card(Suits.h,  3),
-                                              new Card(Suits.h,  4),
-                                              new Card(Suits.h,  5),} ).Returns(false), // StraightFlush
+            new TestCaseData( new Card[] {new Card(Suits.H,  1),
+                                              new Card(Suits.H,  2),
+                                              new Card(Suits.H,  3),
+                                              new Card(Suits.H,  4),
+                                              new Card(Suits.H,  5),} ).Returns(false), // StraightFlush
 
-            new TestCaseData( new List<Card> {new Card(Suits.s,  8),
-                                              new Card(Suits.h,  9),
-                                              new Card(Suits.c, 10),
-                                              new Card(Suits.d, 11),
-                                              new Card(Suits.s, 12),} ).Returns(true), // Straight
+            new TestCaseData( new Card[] {new Card(Suits.S,  8),
+                                              new Card(Suits.H,  9),
+                                              new Card(Suits.C, 10),
+                                              new Card(Suits.D, 11),
+                                              new Card(Suits.S, 12),} ).Returns(true), // Straight
 
-            new TestCaseData( new List<Card> {new Card(Suits.s, 10),
-                                              new Card(Suits.h, 11),
-                                              new Card(Suits.c, 12),
-                                              new Card(Suits.d, 13),
-                                              new Card(Suits.s,  1),} ).Returns(true), // Straight
+            new TestCaseData( new Card[] {new Card(Suits.S, 10),
+                                              new Card(Suits.H, 11),
+                                              new Card(Suits.C, 12),
+                                              new Card(Suits.D, 13),
+                                              new Card(Suits.S,  1),} ).Returns(true), // Straight
 
-            new TestCaseData( new List<Card> {new Card(Suits.h,  1),
-                                              new Card(Suits.h,  2),
-                                              new Card(Suits.h,  3),
-                                              new Card(Suits.h,  4),
-                                              new Card(Suits.c,  5),} ).Returns(true), // Straight
+            new TestCaseData( new Card[] {new Card(Suits.H,  1),
+                                              new Card(Suits.H,  2),
+                                              new Card(Suits.H,  3),
+                                              new Card(Suits.H,  4),
+                                              new Card(Suits.C,  5),} ).Returns(true), // Straight
 
-            new TestCaseData( new List<Card> {new Card(Suits.h,  6),
-                                              new Card(Suits.h,  2),
-                                              new Card(Suits.h,  3),
-                                              new Card(Suits.h,  4),
-                                              new Card(Suits.c,  5),} ).Returns(true), // Straight
+            new TestCaseData( new Card[] {new Card(Suits.H,  6),
+                                              new Card(Suits.H,  2),
+                                              new Card(Suits.H,  3),
+                                              new Card(Suits.H,  4),
+                                              new Card(Suits.C,  5),} ).Returns(true), // Straight
 
-            new TestCaseData( new List<Card> {new Card(Suits.h,  6),
-                                              new Card(Suits.h, 13),
-                                              new Card(Suits.h, 12),
-                                              new Card(Suits.h, 11),
-                                              new Card(Suits.h, 10),} ).Returns(false), // Flush
+            new TestCaseData( new Card[] {new Card(Suits.H,  6),
+                                              new Card(Suits.H, 13),
+                                              new Card(Suits.H, 12),
+                                              new Card(Suits.H, 11),
+                                              new Card(Suits.H, 10),} ).Returns(false), // Flush
 
-            new TestCaseData( new List<Card> {new Card(Suits.c,  2),
-                                              new Card(Suits.c,  3),
-                                              new Card(Suits.c,  4),
-                                              new Card(Suits.c,  5),
-                                              new Card(Suits.c,  7),} ).Returns(false), // Flush
+            new TestCaseData( new Card[] {new Card(Suits.C,  2),
+                                              new Card(Suits.C,  3),
+                                              new Card(Suits.C,  4),
+                                              new Card(Suits.C,  5),
+                                              new Card(Suits.C,  7),} ).Returns(false), // Flush
 
-            new TestCaseData( new List<Card> {new Card(Suits.h,  3),
-                                              new Card(Suits.s,  3),
-                                              new Card(Suits.d,  3),
-                                              new Card(Suits.c,  3),
-                                              new Card(Suits.c,  4),} ).Returns(false), // FourOfAKind
+            new TestCaseData( new Card[] {new Card(Suits.H,  3),
+                                              new Card(Suits.S,  3),
+                                              new Card(Suits.D,  3),
+                                              new Card(Suits.C,  3),
+                                              new Card(Suits.C,  4),} ).Returns(false), // FourOfAKind
 
-            new TestCaseData( new List<Card> {new Card(Suits.h,  3),
-                                              new Card(Suits.s,  3),
-                                              new Card(Suits.d,  3),
-                                              new Card(Suits.c,  4),
-                                              new Card(Suits.c,  5),} ).Returns(false), // ThreeOfAKind
+            new TestCaseData( new Card[] {new Card(Suits.H,  3),
+                                              new Card(Suits.S,  3),
+                                              new Card(Suits.D,  3),
+                                              new Card(Suits.C,  4),
+                                              new Card(Suits.C,  5),} ).Returns(false), // ThreeOfAKind
 
-            new TestCaseData( new List<Card> {new Card(Suits.h,  6),
-                                              new Card(Suits.s,  6),
-                                              new Card(Suits.d,  6),
-                                              new Card(Suits.h,  7),
-                                              new Card(Suits.c,  7),} ).Returns(false), // FullHouse
+            new TestCaseData( new Card[] {new Card(Suits.H,  6),
+                                              new Card(Suits.S,  6),
+                                              new Card(Suits.D,  6),
+                                              new Card(Suits.H,  7),
+                                              new Card(Suits.C,  7),} ).Returns(false), // FullHouse
 
-            new TestCaseData( new List<Card> {new Card(Suits.h,  5),
-                                              new Card(Suits.s,  6),
-                                              new Card(Suits.d,  6),
-                                              new Card(Suits.h,  7),
-                                              new Card(Suits.c,  7),} ).Returns(false), // TwoPair
+            new TestCaseData( new Card[] {new Card(Suits.H,  5),
+                                              new Card(Suits.S,  6),
+                                              new Card(Suits.D,  6),
+                                              new Card(Suits.H,  7),
+                                              new Card(Suits.C,  7),} ).Returns(false), // TwoPair
 
-            new TestCaseData( new List<Card> {new Card(Suits.h,  4),
-                                              new Card(Suits.h,  5),
-                                              new Card(Suits.h,  6),
-                                              new Card(Suits.h,  7),
-                                              new Card(Suits.c,  7),} ).Returns(false), // Pair
+            new TestCaseData( new Card[] {new Card(Suits.H,  4),
+                                              new Card(Suits.H,  5),
+                                              new Card(Suits.H,  6),
+                                              new Card(Suits.H,  7),
+                                              new Card(Suits.C,  7),} ).Returns(false), // Pair
 
-            new TestCaseData( new List<Card> {new Card(Suits.h,  4),
-                                              new Card(Suits.h,  5),
-                                              new Card(Suits.h,  6),
-                                              new Card(Suits.h,  7),
-                                              new Card(Suits.c,  9),} ).Returns(false), // HighCard
+            new TestCaseData( new Card[] {new Card(Suits.H,  4),
+                                              new Card(Suits.H,  5),
+                                              new Card(Suits.H,  6),
+                                              new Card(Suits.H,  7),
+                                              new Card(Suits.C,  9),} ).Returns(false), // HighCard
         };
 
 
 
         [Test, TestCaseSource(nameof(IsThreeOfAKindCases))]
-        public bool IsThreeOfAKind_ㄏノTestCaseSource代刚(List<Card> hand)
+        public bool IsThreeOfAKind_ㄏノTestCaseSource代刚(Card[] hand)
         {
             return new FiveCardStud().IsThreeOfAKind(hand);
         }
         static object[] IsThreeOfAKindCases =
         {
-            new TestCaseData( new List<Card> {new Card(Suits.h, 10),
-                                              new Card(Suits.h, 11),
-                                              new Card(Suits.h, 12),
-                                              new Card(Suits.h, 13),
-                                              new Card(Suits.h,  1),} ).Returns(false), // RoyalFlush
+            new TestCaseData( new Card[] {new Card(Suits.H, 10),
+                                              new Card(Suits.H, 11),
+                                              new Card(Suits.H, 12),
+                                              new Card(Suits.H, 13),
+                                              new Card(Suits.H,  1),} ).Returns(false), // RoyalFlush
 
-            new TestCaseData( new List<Card> {new Card(Suits.s, 10),
-                                              new Card(Suits.s, 11),
-                                              new Card(Suits.s, 12),
-                                              new Card(Suits.s, 13),
-                                              new Card(Suits.s,  1),} ).Returns(false), // RoyalFlush
+            new TestCaseData( new Card[] {new Card(Suits.S, 10),
+                                              new Card(Suits.S, 11),
+                                              new Card(Suits.S, 12),
+                                              new Card(Suits.S, 13),
+                                              new Card(Suits.S,  1),} ).Returns(false), // RoyalFlush
 
-            new TestCaseData( new List<Card> {new Card(Suits.s,  8),
-                                              new Card(Suits.s,  9),
-                                              new Card(Suits.s, 10),
-                                              new Card(Suits.s,  7),
-                                              new Card(Suits.s, 11),} ).Returns(false), // StraightFlush
+            new TestCaseData( new Card[] {new Card(Suits.S,  8),
+                                              new Card(Suits.S,  9),
+                                              new Card(Suits.S, 10),
+                                              new Card(Suits.S,  7),
+                                              new Card(Suits.S, 11),} ).Returns(false), // StraightFlush
 
-            new TestCaseData( new List<Card> {new Card(Suits.h,  1),
-                                              new Card(Suits.h,  2),
-                                              new Card(Suits.h,  3),
-                                              new Card(Suits.h,  4),
-                                              new Card(Suits.h,  5),} ).Returns(false), // StraightFlush
+            new TestCaseData( new Card[] {new Card(Suits.H,  1),
+                                              new Card(Suits.H,  2),
+                                              new Card(Suits.H,  3),
+                                              new Card(Suits.H,  4),
+                                              new Card(Suits.H,  5),} ).Returns(false), // StraightFlush
 
-            new TestCaseData( new List<Card> {new Card(Suits.s,  8),
-                                              new Card(Suits.h,  9),
-                                              new Card(Suits.c, 10),
-                                              new Card(Suits.d, 11),
-                                              new Card(Suits.s, 12),} ).Returns(false), // Straight
+            new TestCaseData( new Card[] {new Card(Suits.S,  8),
+                                              new Card(Suits.H,  9),
+                                              new Card(Suits.C, 10),
+                                              new Card(Suits.D, 11),
+                                              new Card(Suits.S, 12),} ).Returns(false), // Straight
 
-            new TestCaseData( new List<Card> {new Card(Suits.s, 10),
-                                              new Card(Suits.h, 11),
-                                              new Card(Suits.c, 12),
-                                              new Card(Suits.d, 13),
-                                              new Card(Suits.s,  1),} ).Returns(false), // Straight
+            new TestCaseData( new Card[] {new Card(Suits.S, 10),
+                                              new Card(Suits.H, 11),
+                                              new Card(Suits.C, 12),
+                                              new Card(Suits.D, 13),
+                                              new Card(Suits.S,  1),} ).Returns(false), // Straight
 
-            new TestCaseData( new List<Card> {new Card(Suits.h,  1),
-                                              new Card(Suits.h,  2),
-                                              new Card(Suits.h,  3),
-                                              new Card(Suits.h,  4),
-                                              new Card(Suits.c,  5),} ).Returns(false), // Straight
+            new TestCaseData( new Card[] {new Card(Suits.H,  1),
+                                              new Card(Suits.H,  2),
+                                              new Card(Suits.H,  3),
+                                              new Card(Suits.H,  4),
+                                              new Card(Suits.C,  5),} ).Returns(false), // Straight
 
-            new TestCaseData( new List<Card> {new Card(Suits.h,  6),
-                                              new Card(Suits.h,  2),
-                                              new Card(Suits.h,  3),
-                                              new Card(Suits.h,  4),
-                                              new Card(Suits.c,  5),} ).Returns(false), // Straight
+            new TestCaseData( new Card[] {new Card(Suits.H,  6),
+                                              new Card(Suits.H,  2),
+                                              new Card(Suits.H,  3),
+                                              new Card(Suits.H,  4),
+                                              new Card(Suits.C,  5),} ).Returns(false), // Straight
 
-            new TestCaseData( new List<Card> {new Card(Suits.h,  6),
-                                              new Card(Suits.h, 13),
-                                              new Card(Suits.h, 12),
-                                              new Card(Suits.h, 11),
-                                              new Card(Suits.h, 10),} ).Returns(false), // Flush
+            new TestCaseData( new Card[] {new Card(Suits.H,  6),
+                                              new Card(Suits.H, 13),
+                                              new Card(Suits.H, 12),
+                                              new Card(Suits.H, 11),
+                                              new Card(Suits.H, 10),} ).Returns(false), // Flush
 
-            new TestCaseData( new List<Card> {new Card(Suits.c,  2),
-                                              new Card(Suits.c,  3),
-                                              new Card(Suits.c,  4),
-                                              new Card(Suits.c,  5),
-                                              new Card(Suits.c,  7),} ).Returns(false), // Flush
+            new TestCaseData( new Card[] {new Card(Suits.C,  2),
+                                              new Card(Suits.C,  3),
+                                              new Card(Suits.C,  4),
+                                              new Card(Suits.C,  5),
+                                              new Card(Suits.C,  7),} ).Returns(false), // Flush
 
-            new TestCaseData( new List<Card> {new Card(Suits.h,  3),
-                                              new Card(Suits.s,  3),
-                                              new Card(Suits.d,  3),
-                                              new Card(Suits.c,  3),
-                                              new Card(Suits.c,  4),} ).Returns(false), // FourOfAKind
+            new TestCaseData( new Card[] {new Card(Suits.H,  3),
+                                              new Card(Suits.S,  3),
+                                              new Card(Suits.D,  3),
+                                              new Card(Suits.C,  3),
+                                              new Card(Suits.C,  4),} ).Returns(false), // FourOfAKind
 
-            new TestCaseData( new List<Card> {new Card(Suits.h,  3),
-                                              new Card(Suits.s,  3),
-                                              new Card(Suits.d,  3),
-                                              new Card(Suits.c,  4),
-                                              new Card(Suits.c,  5),} ).Returns(true), // ThreeOfAKind
+            new TestCaseData( new Card[] {new Card(Suits.H,  3),
+                                              new Card(Suits.S,  3),
+                                              new Card(Suits.D,  3),
+                                              new Card(Suits.C,  4),
+                                              new Card(Suits.C,  5),} ).Returns(true), // ThreeOfAKind
 
-            new TestCaseData( new List<Card> {new Card(Suits.h,  6),
-                                              new Card(Suits.s,  6),
-                                              new Card(Suits.d,  6),
-                                              new Card(Suits.h,  7),
-                                              new Card(Suits.c,  7),} ).Returns(false), // FullHouse
+            new TestCaseData( new Card[] {new Card(Suits.H,  6),
+                                              new Card(Suits.S,  6),
+                                              new Card(Suits.D,  6),
+                                              new Card(Suits.H,  7),
+                                              new Card(Suits.C,  7),} ).Returns(false), // FullHouse
 
-            new TestCaseData( new List<Card> {new Card(Suits.h,  5),
-                                              new Card(Suits.s,  6),
-                                              new Card(Suits.d,  6),
-                                              new Card(Suits.h,  7),
-                                              new Card(Suits.c,  7),} ).Returns(false), // TwoPair
+            new TestCaseData( new Card[] {new Card(Suits.H,  5),
+                                              new Card(Suits.S,  6),
+                                              new Card(Suits.D,  6),
+                                              new Card(Suits.H,  7),
+                                              new Card(Suits.C,  7),} ).Returns(false), // TwoPair
 
-            new TestCaseData( new List<Card> {new Card(Suits.h,  4),
-                                              new Card(Suits.h,  5),
-                                              new Card(Suits.h,  6),
-                                              new Card(Suits.h,  7),
-                                              new Card(Suits.c,  7),} ).Returns(false), // Pair
+            new TestCaseData( new Card[] {new Card(Suits.H,  4),
+                                              new Card(Suits.H,  5),
+                                              new Card(Suits.H,  6),
+                                              new Card(Suits.H,  7),
+                                              new Card(Suits.C,  7),} ).Returns(false), // Pair
 
-            new TestCaseData( new List<Card> {new Card(Suits.h,  4),
-                                              new Card(Suits.h,  5),
-                                              new Card(Suits.h,  6),
-                                              new Card(Suits.h,  7),
-                                              new Card(Suits.c,  9),} ).Returns(false), // HighCard
+            new TestCaseData( new Card[] {new Card(Suits.H,  4),
+                                              new Card(Suits.H,  5),
+                                              new Card(Suits.H,  6),
+                                              new Card(Suits.H,  7),
+                                              new Card(Suits.C,  9),} ).Returns(false), // HighCard
         };
 
 
 
         [Test, TestCaseSource(nameof(IsTwoPairCases))]
-        public bool IsTwoPair_ㄏノTestCaseSource代刚(List<Card> hand)
+        public bool IsTwoPair_ㄏノTestCaseSource代刚(Card[] hand)
         {
             return new FiveCardStud().IsTwoPair(hand);
         }
         static object[] IsTwoPairCases =
         {
-            new TestCaseData( new List<Card> {new Card(Suits.h, 10),
-                                              new Card(Suits.h, 11),
-                                              new Card(Suits.h, 12),
-                                              new Card(Suits.h, 13),
-                                              new Card(Suits.h,  1),} ).Returns(false), // RoyalFlush
+            new TestCaseData( new Card[] {new Card(Suits.H, 10),
+                                              new Card(Suits.H, 11),
+                                              new Card(Suits.H, 12),
+                                              new Card(Suits.H, 13),
+                                              new Card(Suits.H,  1),} ).Returns(false), // RoyalFlush
 
-            new TestCaseData( new List<Card> {new Card(Suits.s, 10),
-                                              new Card(Suits.s, 11),
-                                              new Card(Suits.s, 12),
-                                              new Card(Suits.s, 13),
-                                              new Card(Suits.s,  1),} ).Returns(false), // RoyalFlush
+            new TestCaseData( new Card[] {new Card(Suits.S, 10),
+                                              new Card(Suits.S, 11),
+                                              new Card(Suits.S, 12),
+                                              new Card(Suits.S, 13),
+                                              new Card(Suits.S,  1),} ).Returns(false), // RoyalFlush
 
-            new TestCaseData( new List<Card> {new Card(Suits.s,  8),
-                                              new Card(Suits.s,  9),
-                                              new Card(Suits.s, 10),
-                                              new Card(Suits.s,  7),
-                                              new Card(Suits.s, 11),} ).Returns(false), // StraightFlush
+            new TestCaseData( new Card[] {new Card(Suits.S,  8),
+                                              new Card(Suits.S,  9),
+                                              new Card(Suits.S, 10),
+                                              new Card(Suits.S,  7),
+                                              new Card(Suits.S, 11),} ).Returns(false), // StraightFlush
 
-            new TestCaseData( new List<Card> {new Card(Suits.h,  1),
-                                              new Card(Suits.h,  2),
-                                              new Card(Suits.h,  3),
-                                              new Card(Suits.h,  4),
-                                              new Card(Suits.h,  5),} ).Returns(false), // StraightFlush
+            new TestCaseData( new Card[] {new Card(Suits.H,  1),
+                                              new Card(Suits.H,  2),
+                                              new Card(Suits.H,  3),
+                                              new Card(Suits.H,  4),
+                                              new Card(Suits.H,  5),} ).Returns(false), // StraightFlush
 
-            new TestCaseData( new List<Card> {new Card(Suits.s,  8),
-                                              new Card(Suits.h,  9),
-                                              new Card(Suits.c, 10),
-                                              new Card(Suits.d, 11),
-                                              new Card(Suits.s, 12),} ).Returns(false), // Straight
+            new TestCaseData( new Card[] {new Card(Suits.S,  8),
+                                              new Card(Suits.H,  9),
+                                              new Card(Suits.C, 10),
+                                              new Card(Suits.D, 11),
+                                              new Card(Suits.S, 12),} ).Returns(false), // Straight
 
-            new TestCaseData( new List<Card> {new Card(Suits.s, 10),
-                                              new Card(Suits.h, 11),
-                                              new Card(Suits.c, 12),
-                                              new Card(Suits.d, 13),
-                                              new Card(Suits.s,  1),} ).Returns(false), // Straight
+            new TestCaseData( new Card[] {new Card(Suits.S, 10),
+                                              new Card(Suits.H, 11),
+                                              new Card(Suits.C, 12),
+                                              new Card(Suits.D, 13),
+                                              new Card(Suits.S,  1),} ).Returns(false), // Straight
 
-            new TestCaseData( new List<Card> {new Card(Suits.h,  1),
-                                              new Card(Suits.h,  2),
-                                              new Card(Suits.h,  3),
-                                              new Card(Suits.h,  4),
-                                              new Card(Suits.c,  5),} ).Returns(false), // Straight
+            new TestCaseData( new Card[] {new Card(Suits.H,  1),
+                                              new Card(Suits.H,  2),
+                                              new Card(Suits.H,  3),
+                                              new Card(Suits.H,  4),
+                                              new Card(Suits.C,  5),} ).Returns(false), // Straight
 
-            new TestCaseData( new List<Card> {new Card(Suits.h,  6),
-                                              new Card(Suits.h,  2),
-                                              new Card(Suits.h,  3),
-                                              new Card(Suits.h,  4),
-                                              new Card(Suits.c,  5),} ).Returns(false), // Straight
+            new TestCaseData( new Card[] {new Card(Suits.H,  6),
+                                              new Card(Suits.H,  2),
+                                              new Card(Suits.H,  3),
+                                              new Card(Suits.H,  4),
+                                              new Card(Suits.C,  5),} ).Returns(false), // Straight
 
-            new TestCaseData( new List<Card> {new Card(Suits.h,  6),
-                                              new Card(Suits.h, 13),
-                                              new Card(Suits.h, 12),
-                                              new Card(Suits.h, 11),
-                                              new Card(Suits.h, 10),} ).Returns(false), // Flush
+            new TestCaseData( new Card[] {new Card(Suits.H,  6),
+                                              new Card(Suits.H, 13),
+                                              new Card(Suits.H, 12),
+                                              new Card(Suits.H, 11),
+                                              new Card(Suits.H, 10),} ).Returns(false), // Flush
 
-            new TestCaseData( new List<Card> {new Card(Suits.c,  2),
-                                              new Card(Suits.c,  3),
-                                              new Card(Suits.c,  4),
-                                              new Card(Suits.c,  5),
-                                              new Card(Suits.c,  7),} ).Returns(false), // Flush
+            new TestCaseData( new Card[] {new Card(Suits.C,  2),
+                                              new Card(Suits.C,  3),
+                                              new Card(Suits.C,  4),
+                                              new Card(Suits.C,  5),
+                                              new Card(Suits.C,  7),} ).Returns(false), // Flush
 
-            new TestCaseData( new List<Card> {new Card(Suits.h,  3),
-                                              new Card(Suits.s,  3),
-                                              new Card(Suits.d,  3),
-                                              new Card(Suits.c,  3),
-                                              new Card(Suits.c,  4),} ).Returns(false), // FourOfAKind
+            new TestCaseData( new Card[] {new Card(Suits.H,  3),
+                                              new Card(Suits.S,  3),
+                                              new Card(Suits.D,  3),
+                                              new Card(Suits.C,  3),
+                                              new Card(Suits.C,  4),} ).Returns(false), // FourOfAKind
 
-            new TestCaseData( new List<Card> {new Card(Suits.h,  3),
-                                              new Card(Suits.s,  3),
-                                              new Card(Suits.d,  3),
-                                              new Card(Suits.c,  4),
-                                              new Card(Suits.c,  5),} ).Returns(false), // ThreeOfAKind
+            new TestCaseData( new Card[] {new Card(Suits.H,  3),
+                                              new Card(Suits.S,  3),
+                                              new Card(Suits.D,  3),
+                                              new Card(Suits.C,  4),
+                                              new Card(Suits.C,  5),} ).Returns(false), // ThreeOfAKind
 
-            new TestCaseData( new List<Card> {new Card(Suits.h,  6),
-                                              new Card(Suits.s,  6),
-                                              new Card(Suits.d,  6),
-                                              new Card(Suits.h,  7),
-                                              new Card(Suits.c,  7),} ).Returns(false), // FullHouse
+            new TestCaseData( new Card[] {new Card(Suits.H,  6),
+                                              new Card(Suits.S,  6),
+                                              new Card(Suits.D,  6),
+                                              new Card(Suits.H,  7),
+                                              new Card(Suits.C,  7),} ).Returns(false), // FullHouse
 
-            new TestCaseData( new List<Card> {new Card(Suits.h,  5),
-                                              new Card(Suits.s,  6),
-                                              new Card(Suits.d,  6),
-                                              new Card(Suits.h,  7),
-                                              new Card(Suits.c,  7),} ).Returns(true), // TwoPair
+            new TestCaseData( new Card[] {new Card(Suits.H,  5),
+                                              new Card(Suits.S,  6),
+                                              new Card(Suits.D,  6),
+                                              new Card(Suits.H,  7),
+                                              new Card(Suits.C,  7),} ).Returns(true), // TwoPair
 
-            new TestCaseData( new List<Card> {new Card(Suits.h,  4),
-                                              new Card(Suits.h,  5),
-                                              new Card(Suits.h,  6),
-                                              new Card(Suits.h,  7),
-                                              new Card(Suits.c,  7),} ).Returns(false), // Pair
+            new TestCaseData( new Card[] {new Card(Suits.H,  4),
+                                              new Card(Suits.H,  5),
+                                              new Card(Suits.H,  6),
+                                              new Card(Suits.H,  7),
+                                              new Card(Suits.C,  7),} ).Returns(false), // Pair
 
-            new TestCaseData( new List<Card> {new Card(Suits.h,  4),
-                                              new Card(Suits.h,  5),
-                                              new Card(Suits.h,  6),
-                                              new Card(Suits.h,  7),
-                                              new Card(Suits.c,  9),} ).Returns(false), // HighCard
+            new TestCaseData( new Card[] {new Card(Suits.H,  4),
+                                              new Card(Suits.H,  5),
+                                              new Card(Suits.H,  6),
+                                              new Card(Suits.H,  7),
+                                              new Card(Suits.C,  9),} ).Returns(false), // HighCard
         };
 
 
 
         [Test, TestCaseSource(nameof(IsPairCases))]
-        public bool IsPair_ㄏノTestCaseSource代刚(List<Card> hand)
+        public bool IsPair_ㄏノTestCaseSource代刚(Card[] hand)
         {
             return new FiveCardStud().IsPair(hand);
         }
         static object[] IsPairCases =
         {
-            new TestCaseData( new List<Card> {new Card(Suits.h, 10),
-                                              new Card(Suits.h, 11),
-                                              new Card(Suits.h, 12),
-                                              new Card(Suits.h, 13),
-                                              new Card(Suits.h,  1),} ).Returns(false), // RoyalFlush
+            new TestCaseData( new Card[] {new Card(Suits.H, 10),
+                                              new Card(Suits.H, 11),
+                                              new Card(Suits.H, 12),
+                                              new Card(Suits.H, 13),
+                                              new Card(Suits.H,  1),} ).Returns(false), // RoyalFlush
 
-            new TestCaseData( new List<Card> {new Card(Suits.s, 10),
-                                              new Card(Suits.s, 11),
-                                              new Card(Suits.s, 12),
-                                              new Card(Suits.s, 13),
-                                              new Card(Suits.s,  1),} ).Returns(false), // RoyalFlush
+            new TestCaseData( new Card[] {new Card(Suits.S, 10),
+                                              new Card(Suits.S, 11),
+                                              new Card(Suits.S, 12),
+                                              new Card(Suits.S, 13),
+                                              new Card(Suits.S,  1),} ).Returns(false), // RoyalFlush
 
-            new TestCaseData( new List<Card> {new Card(Suits.s,  8),
-                                              new Card(Suits.s,  9),
-                                              new Card(Suits.s, 10),
-                                              new Card(Suits.s,  7),
-                                              new Card(Suits.s, 11),} ).Returns(false), // StraightFlush
+            new TestCaseData( new Card[] {new Card(Suits.S,  8),
+                                              new Card(Suits.S,  9),
+                                              new Card(Suits.S, 10),
+                                              new Card(Suits.S,  7),
+                                              new Card(Suits.S, 11),} ).Returns(false), // StraightFlush
 
-            new TestCaseData( new List<Card> {new Card(Suits.h,  1),
-                                              new Card(Suits.h,  2),
-                                              new Card(Suits.h,  3),
-                                              new Card(Suits.h,  4),
-                                              new Card(Suits.h,  5),} ).Returns(false), // StraightFlush
+            new TestCaseData( new Card[] {new Card(Suits.H,  1),
+                                              new Card(Suits.H,  2),
+                                              new Card(Suits.H,  3),
+                                              new Card(Suits.H,  4),
+                                              new Card(Suits.H,  5),} ).Returns(false), // StraightFlush
 
-            new TestCaseData( new List<Card> {new Card(Suits.s,  8),
-                                              new Card(Suits.h,  9),
-                                              new Card(Suits.c, 10),
-                                              new Card(Suits.d, 11),
-                                              new Card(Suits.s, 12),} ).Returns(false), // Straight
+            new TestCaseData( new Card[] {new Card(Suits.S,  8),
+                                              new Card(Suits.H,  9),
+                                              new Card(Suits.C, 10),
+                                              new Card(Suits.D, 11),
+                                              new Card(Suits.S, 12),} ).Returns(false), // Straight
 
-            new TestCaseData( new List<Card> {new Card(Suits.s, 10),
-                                              new Card(Suits.h, 11),
-                                              new Card(Suits.c, 12),
-                                              new Card(Suits.d, 13),
-                                              new Card(Suits.s,  1),} ).Returns(false), // Straight
+            new TestCaseData( new Card[] {new Card(Suits.S, 10),
+                                              new Card(Suits.H, 11),
+                                              new Card(Suits.C, 12),
+                                              new Card(Suits.D, 13),
+                                              new Card(Suits.S,  1),} ).Returns(false), // Straight
 
-            new TestCaseData( new List<Card> {new Card(Suits.h,  1),
-                                              new Card(Suits.h,  2),
-                                              new Card(Suits.h,  3),
-                                              new Card(Suits.h,  4),
-                                              new Card(Suits.c,  5),} ).Returns(false), // Straight
+            new TestCaseData( new Card[] {new Card(Suits.H,  1),
+                                              new Card(Suits.H,  2),
+                                              new Card(Suits.H,  3),
+                                              new Card(Suits.H,  4),
+                                              new Card(Suits.C,  5),} ).Returns(false), // Straight
 
-            new TestCaseData( new List<Card> {new Card(Suits.h,  6),
-                                              new Card(Suits.h,  2),
-                                              new Card(Suits.h,  3),
-                                              new Card(Suits.h,  4),
-                                              new Card(Suits.c,  5),} ).Returns(false), // Straight
+            new TestCaseData( new Card[] {new Card(Suits.H,  6),
+                                              new Card(Suits.H,  2),
+                                              new Card(Suits.H,  3),
+                                              new Card(Suits.H,  4),
+                                              new Card(Suits.C,  5),} ).Returns(false), // Straight
 
-            new TestCaseData( new List<Card> {new Card(Suits.h,  6),
-                                              new Card(Suits.h, 13),
-                                              new Card(Suits.h, 12),
-                                              new Card(Suits.h, 11),
-                                              new Card(Suits.h, 10),} ).Returns(false), // Flush
+            new TestCaseData( new Card[] {new Card(Suits.H,  6),
+                                              new Card(Suits.H, 13),
+                                              new Card(Suits.H, 12),
+                                              new Card(Suits.H, 11),
+                                              new Card(Suits.H, 10),} ).Returns(false), // Flush
 
-            new TestCaseData( new List<Card> {new Card(Suits.c,  2),
-                                              new Card(Suits.c,  3),
-                                              new Card(Suits.c,  4),
-                                              new Card(Suits.c,  5),
-                                              new Card(Suits.c,  7),} ).Returns(false), // Flush
+            new TestCaseData( new Card[] {new Card(Suits.C,  2),
+                                              new Card(Suits.C,  3),
+                                              new Card(Suits.C,  4),
+                                              new Card(Suits.C,  5),
+                                              new Card(Suits.C,  7),} ).Returns(false), // Flush
 
-            new TestCaseData( new List<Card> {new Card(Suits.h,  3),
-                                              new Card(Suits.s,  3),
-                                              new Card(Suits.d,  3),
-                                              new Card(Suits.c,  3),
-                                              new Card(Suits.c,  4),} ).Returns(false), // FourOfAKind
+            new TestCaseData( new Card[] {new Card(Suits.H,  3),
+                                              new Card(Suits.S,  3),
+                                              new Card(Suits.D,  3),
+                                              new Card(Suits.C,  3),
+                                              new Card(Suits.C,  4),} ).Returns(false), // FourOfAKind
 
-            new TestCaseData( new List<Card> {new Card(Suits.h,  3),
-                                              new Card(Suits.s,  3),
-                                              new Card(Suits.d,  3),
-                                              new Card(Suits.c,  4),
-                                              new Card(Suits.c,  5),} ).Returns(false), // ThreeOfAKind
+            new TestCaseData( new Card[] {new Card(Suits.H,  3),
+                                              new Card(Suits.S,  3),
+                                              new Card(Suits.D,  3),
+                                              new Card(Suits.C,  4),
+                                              new Card(Suits.C,  5),} ).Returns(false), // ThreeOfAKind
 
-            new TestCaseData( new List<Card> {new Card(Suits.h,  6),
-                                              new Card(Suits.s,  6),
-                                              new Card(Suits.d,  6),
-                                              new Card(Suits.h,  7),
-                                              new Card(Suits.c,  7),} ).Returns(false), // FullHouse
+            new TestCaseData( new Card[] {new Card(Suits.H,  6),
+                                              new Card(Suits.S,  6),
+                                              new Card(Suits.D,  6),
+                                              new Card(Suits.H,  7),
+                                              new Card(Suits.C,  7),} ).Returns(false), // FullHouse
 
-            new TestCaseData( new List<Card> {new Card(Suits.h,  5),
-                                              new Card(Suits.s,  6),
-                                              new Card(Suits.d,  6),
-                                              new Card(Suits.h,  7),
-                                              new Card(Suits.c,  7),} ).Returns(false), // TwoPair
+            new TestCaseData( new Card[] {new Card(Suits.H,  5),
+                                              new Card(Suits.S,  6),
+                                              new Card(Suits.D,  6),
+                                              new Card(Suits.H,  7),
+                                              new Card(Suits.C,  7),} ).Returns(false), // TwoPair
 
-            new TestCaseData( new List<Card> {new Card(Suits.h,  4),
-                                              new Card(Suits.h,  5),
-                                              new Card(Suits.h,  6),
-                                              new Card(Suits.h,  7),
-                                              new Card(Suits.c,  7),} ).Returns(true), // Pair
+            new TestCaseData( new Card[] {new Card(Suits.H,  4),
+                                              new Card(Suits.H,  5),
+                                              new Card(Suits.H,  6),
+                                              new Card(Suits.H,  7),
+                                              new Card(Suits.C,  7),} ).Returns(true), // Pair
 
-            new TestCaseData( new List<Card> {new Card(Suits.h,  4),
-                                              new Card(Suits.h,  5),
-                                              new Card(Suits.h,  6),
-                                              new Card(Suits.h,  7),
-                                              new Card(Suits.c,  9),} ).Returns(false), // HighCard
+            new TestCaseData( new Card[] {new Card(Suits.H,  4),
+                                              new Card(Suits.H,  5),
+                                              new Card(Suits.H,  6),
+                                              new Card(Suits.H,  7),
+                                              new Card(Suits.C,  9),} ).Returns(false), // HighCard
         };
 
 
 
         [Test, TestCaseSource(nameof(IsHighCardCases))]
-        public bool IsHighCard_ㄏノTestCaseSource代刚(List<Card> hand)
+        public bool IsHighCard_ㄏノTestCaseSource代刚(Card[] hand)
         {
             return new FiveCardStud().IsHighCard(hand);
         }
         static object[] IsHighCardCases =
         {
-            new TestCaseData( new List<Card> {new Card(Suits.h, 10),
-                                              new Card(Suits.h, 11),
-                                              new Card(Suits.h, 12),
-                                              new Card(Suits.h, 13),
-                                              new Card(Suits.h,  1),} ).Returns(false), // RoyalFlush
+            new TestCaseData( new Card[] {new Card(Suits.H, 10),
+                                              new Card(Suits.H, 11),
+                                              new Card(Suits.H, 12),
+                                              new Card(Suits.H, 13),
+                                              new Card(Suits.H,  1),} ).Returns(false), // RoyalFlush
 
-            new TestCaseData( new List<Card> {new Card(Suits.s, 10),
-                                              new Card(Suits.s, 11),
-                                              new Card(Suits.s, 12),
-                                              new Card(Suits.s, 13),
-                                              new Card(Suits.s,  1),} ).Returns(false), // RoyalFlush
+            new TestCaseData( new Card[] {new Card(Suits.S, 10),
+                                              new Card(Suits.S, 11),
+                                              new Card(Suits.S, 12),
+                                              new Card(Suits.S, 13),
+                                              new Card(Suits.S,  1),} ).Returns(false), // RoyalFlush
 
-            new TestCaseData( new List<Card> {new Card(Suits.s,  8),
-                                              new Card(Suits.s,  9),
-                                              new Card(Suits.s, 10),
-                                              new Card(Suits.s,  7),
-                                              new Card(Suits.s, 11),} ).Returns(false), // StraightFlush
+            new TestCaseData( new Card[] {new Card(Suits.S,  8),
+                                              new Card(Suits.S,  9),
+                                              new Card(Suits.S, 10),
+                                              new Card(Suits.S,  7),
+                                              new Card(Suits.S, 11),} ).Returns(false), // StraightFlush
 
-            new TestCaseData( new List<Card> {new Card(Suits.h,  1),
-                                              new Card(Suits.h,  2),
-                                              new Card(Suits.h,  3),
-                                              new Card(Suits.h,  4),
-                                              new Card(Suits.h,  5),} ).Returns(false), // StraightFlush
+            new TestCaseData( new Card[] {new Card(Suits.H,  1),
+                                              new Card(Suits.H,  2),
+                                              new Card(Suits.H,  3),
+                                              new Card(Suits.H,  4),
+                                              new Card(Suits.H,  5),} ).Returns(false), // StraightFlush
 
-            new TestCaseData( new List<Card> {new Card(Suits.s,  8),
-                                              new Card(Suits.h,  9),
-                                              new Card(Suits.c, 10),
-                                              new Card(Suits.d, 11),
-                                              new Card(Suits.s, 12),} ).Returns(false), // Straight
+            new TestCaseData( new Card[] {new Card(Suits.S,  8),
+                                              new Card(Suits.H,  9),
+                                              new Card(Suits.C, 10),
+                                              new Card(Suits.D, 11),
+                                              new Card(Suits.S, 12),} ).Returns(false), // Straight
 
-            new TestCaseData( new List<Card> {new Card(Suits.s, 10),
-                                              new Card(Suits.h, 11),
-                                              new Card(Suits.c, 12),
-                                              new Card(Suits.d, 13),
-                                              new Card(Suits.s,  1),} ).Returns(false), // Straight
+            new TestCaseData( new Card[] {new Card(Suits.S, 10),
+                                              new Card(Suits.H, 11),
+                                              new Card(Suits.C, 12),
+                                              new Card(Suits.D, 13),
+                                              new Card(Suits.S,  1),} ).Returns(false), // Straight
 
-            new TestCaseData( new List<Card> {new Card(Suits.h,  1),
-                                              new Card(Suits.h,  2),
-                                              new Card(Suits.h,  3),
-                                              new Card(Suits.h,  4),
-                                              new Card(Suits.c,  5),} ).Returns(false), // Straight
+            new TestCaseData( new Card[] {new Card(Suits.H,  1),
+                                              new Card(Suits.H,  2),
+                                              new Card(Suits.H,  3),
+                                              new Card(Suits.H,  4),
+                                              new Card(Suits.C,  5),} ).Returns(false), // Straight
 
-            new TestCaseData( new List<Card> {new Card(Suits.h,  6),
-                                              new Card(Suits.h,  2),
-                                              new Card(Suits.h,  3),
-                                              new Card(Suits.h,  4),
-                                              new Card(Suits.c,  5),} ).Returns(false), // Straight
+            new TestCaseData( new Card[] {new Card(Suits.H,  6),
+                                              new Card(Suits.H,  2),
+                                              new Card(Suits.H,  3),
+                                              new Card(Suits.H,  4),
+                                              new Card(Suits.C,  5),} ).Returns(false), // Straight
 
-            new TestCaseData( new List<Card> {new Card(Suits.h,  6),
-                                              new Card(Suits.h, 13),
-                                              new Card(Suits.h, 12),
-                                              new Card(Suits.h, 11),
-                                              new Card(Suits.h, 10),} ).Returns(false), // Flush
+            new TestCaseData( new Card[] {new Card(Suits.H,  6),
+                                              new Card(Suits.H, 13),
+                                              new Card(Suits.H, 12),
+                                              new Card(Suits.H, 11),
+                                              new Card(Suits.H, 10),} ).Returns(false), // Flush
 
-            new TestCaseData( new List<Card> {new Card(Suits.c,  2),
-                                              new Card(Suits.c,  3),
-                                              new Card(Suits.c,  4),
-                                              new Card(Suits.c,  5),
-                                              new Card(Suits.c,  7),} ).Returns(false), // Flush
+            new TestCaseData( new Card[] {new Card(Suits.C,  2),
+                                              new Card(Suits.C,  3),
+                                              new Card(Suits.C,  4),
+                                              new Card(Suits.C,  5),
+                                              new Card(Suits.C,  7),} ).Returns(false), // Flush
 
-            new TestCaseData( new List<Card> {new Card(Suits.h,  3),
-                                              new Card(Suits.s,  3),
-                                              new Card(Suits.d,  3),
-                                              new Card(Suits.c,  3),
-                                              new Card(Suits.c,  4),} ).Returns(false), // FourOfAKind
+            new TestCaseData( new Card[] {new Card(Suits.H,  3),
+                                              new Card(Suits.S,  3),
+                                              new Card(Suits.D,  3),
+                                              new Card(Suits.C,  3),
+                                              new Card(Suits.C,  4),} ).Returns(false), // FourOfAKind
 
-            new TestCaseData( new List<Card> {new Card(Suits.h,  3),
-                                              new Card(Suits.s,  3),
-                                              new Card(Suits.d,  3),
-                                              new Card(Suits.c,  4),
-                                              new Card(Suits.c,  5),} ).Returns(false), // ThreeOfAKind
+            new TestCaseData( new Card[] {new Card(Suits.H,  3),
+                                              new Card(Suits.S,  3),
+                                              new Card(Suits.D,  3),
+                                              new Card(Suits.C,  4),
+                                              new Card(Suits.C,  5),} ).Returns(false), // ThreeOfAKind
 
-            new TestCaseData( new List<Card> {new Card(Suits.h,  6),
-                                              new Card(Suits.s,  6),
-                                              new Card(Suits.d,  6),
-                                              new Card(Suits.h,  7),
-                                              new Card(Suits.c,  7),} ).Returns(false), // FullHouse
+            new TestCaseData( new Card[] {new Card(Suits.H,  6),
+                                              new Card(Suits.S,  6),
+                                              new Card(Suits.D,  6),
+                                              new Card(Suits.H,  7),
+                                              new Card(Suits.C,  7),} ).Returns(false), // FullHouse
 
-            new TestCaseData( new List<Card> {new Card(Suits.h,  5),
-                                              new Card(Suits.s,  6),
-                                              new Card(Suits.d,  6),
-                                              new Card(Suits.h,  7),
-                                              new Card(Suits.c,  7),} ).Returns(false), // TwoPair
+            new TestCaseData( new Card[] {new Card(Suits.H,  5),
+                                              new Card(Suits.S,  6),
+                                              new Card(Suits.D,  6),
+                                              new Card(Suits.H,  7),
+                                              new Card(Suits.C,  7),} ).Returns(false), // TwoPair
 
-            new TestCaseData( new List<Card> {new Card(Suits.h,  4),
-                                              new Card(Suits.h,  5),
-                                              new Card(Suits.h,  6),
-                                              new Card(Suits.h,  7),
-                                              new Card(Suits.c,  7),} ).Returns(false), // Pair
+            new TestCaseData( new Card[] {new Card(Suits.H,  4),
+                                              new Card(Suits.H,  5),
+                                              new Card(Suits.H,  6),
+                                              new Card(Suits.H,  7),
+                                              new Card(Suits.C,  7),} ).Returns(false), // Pair
 
-            new TestCaseData( new List<Card> {new Card(Suits.h,  4),
-                                              new Card(Suits.h,  5),
-                                              new Card(Suits.h,  6),
-                                              new Card(Suits.h,  7),
-                                              new Card(Suits.c,  9),} ).Returns(true), // HighCard
+            new TestCaseData( new Card[] {new Card(Suits.H,  4),
+                                              new Card(Suits.H,  5),
+                                              new Card(Suits.H,  6),
+                                              new Card(Suits.H,  7),
+                                              new Card(Suits.C,  9),} ).Returns(true), // HighCard
         };
     }
 }

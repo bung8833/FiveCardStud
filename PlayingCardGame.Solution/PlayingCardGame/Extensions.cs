@@ -35,9 +35,9 @@ namespace PlayingCardGame
         /// </summary>
         /// <param name="hand"></param>
         /// <returns></returns>
-        public static bool Are5StraightCards(this List<Card> hand)
+        public static bool Are5StraightCards(this Card[] hand)
         {
-            if (hand.Count != 5) return false;
+            if (hand.Count() != 5) return false;
 
             // 數字必須皆不相同
             if (hand.Select(c => c.Value).Distinct().Count() != 5) return false;

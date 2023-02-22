@@ -13,19 +13,9 @@ namespace PlayingCardGame
         Diamond = 2,
         Club = 1,
 
-        spade = Spade,
-        heart = Heart,
-        diamond = Diamond,
-        club = Club,
-
         S = Spade,
         H = Heart,
         D = Diamond,
         C = Club,
-
-        s = Spade,
-        h = Heart,
-        d = Diamond,
-        c = Club,
     }
 }
