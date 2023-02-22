@@ -9,45 +9,33 @@ namespace PlayingCardGame
     public static class CardUtility
     {
         /// <summary>
-        /// 隨機選取任意張不重複的牌
+        /// 傳回任意張隨機挑選且不重複的牌
         /// </summary>
-        /// <param name="countOfCard"></param>
+        /// <param name="countOfCards"></param>
         /// <returns></returns>
-        public static List<Card> GetRandomCards(int countOfCard)
+        public static IEnumerable<Card> GetRandomCards(int countOfCards)
         {
-            Suits[] suits = new Suits[] { Suits.Spade, Suits.Heart, Suits.Diamond, Suits.Club };
-            int[] values = new int[] { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13 };
-
-            List<Card> deckOfCards = suits.Join(values,
-                s => 1,
-                v => 1,
-                (s, v) => new Card(s, v))
-                .ToList();
-
-            List<Card> result = new List<Card>();
+            var deck = new Deck();
+            deck.Shuffle();
 
             // 最多取52張牌
-            if (countOfCard > deckOfCards.Count) countOfCard = deckOfCards.Count;
+            if (countOfCards > deck.Cards.Count()) countOfCards = deck.Cards.Count();
 
-            // todo 改成Shuffle() 然後 deckOfCards.Take(countOfCard)
-            while (result.Count < countOfCard)
-            {
-                Random seed = new Random(Guid.NewGuid().GetHashCode());
-                int index = seed.Next(0, deckOfCards.Count); // [0, deckOfCards.Count)
-
-                result.Add(deckOfCards[index]);
-                deckOfCards.RemoveAt(index); // 取完就丟掉 才不會取到重覆的牌
-            }
-
-            return result;
+            return deck.Cards.Take(countOfCards);
         }
+
+        /// <summary>
+        /// 傳回一張隨機挑選的牌
+        /// </summary>
+        /// <returns></returns>
+        public static Card GetRandomCard() => GetRandomCards(1).Single();
 
         /// <summary>
         /// 將牌按照數字、花色排序
         /// </summary>
         /// <param name="cards"></param>
         /// <returns></returns>
-        public static List<Card> SoryByHighOrLow(this List<Card> cards)
+        public static List<Card> SortByHighOrLow(this List<Card> cards)
         {
             cards.Sort((x, y) => x.CompareTo(y));
             return cards;

@@ -12,18 +12,38 @@ namespace PlayingCardGame.ConsoleApp
     {
         static void Main(string[] args)
         {
-            var deck1 = new Deck();
-            deck1.Shuffle();
+            for (int i = 0; i < 10; i++)
+            {
+                RandomCardTest(10000).ToList().ForEach(kvp => Console.Write(kvp + " "));
+                Console.WriteLine();
+            }
 
-            var hand1 = deck1.Deal(5).SoryByHighOrLow();
-            var hand2 = deck1.Deal(5).SoryByHighOrLow();
-
-
-            hand1.ForEach(c => Console.Write(c + " ")); Console.WriteLine();
-            hand2.ForEach(c => Console.Write(c + " ")); Console.WriteLine();
+            
 
 
             Console.ReadLine();
+        }
+
+
+
+
+        private static Dictionary<int, int> RandomCardTest(int cardCount)
+        {
+            Dictionary<int, int> rankAppearances = new Dictionary<int, int>()
+            {
+                { 1, 0 }, { 2, 0 }, { 3, 0 }, { 4, 0 }, { 5, 0 },
+                { 6, 0 }, { 7, 0 }, { 8, 0 }, { 9, 0 }, {10, 0 },
+                {11, 0 }, {12, 0 }, {13, 0 },
+            };
+
+            for (int i = 0; i < cardCount; i++)
+            {
+                Card card = CardUtility.GetRandomCard();
+
+                rankAppearances[card.Value] += 1;
+            }
+
+            return rankAppearances;
         }
     }
 }

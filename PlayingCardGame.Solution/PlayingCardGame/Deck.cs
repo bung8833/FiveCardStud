@@ -82,11 +82,11 @@ namespace PlayingCardGame
         {
             int n = Cards.Count;
 
-            Random seed = new Random(Guid.NewGuid().GetHashCode());
+            Random rand = new Random(Guid.NewGuid().GetHashCode());
             while (n > 0)
             {
                 n--;
-                int index = seed.Next(0, n);
+                int index = rand.Next(0, n);
 
                 Card temp = Cards[n];
                 Cards[n] = Cards[index];
@@ -94,22 +94,6 @@ namespace PlayingCardGame
             }
 
             return this;
-        }
-
-        /// <summary>
-        /// 向Deck索取下一張牌 若叫用時已被取光 則丟出例外
-        /// </summary>
-        /// <returns></returns>
-        public Card Deal()
-        {
-            return Deal(1).First();
-
-            //int count = Cards.Count;
-            //if (count == 0) throw new Exception("Deck已經沒有牌可抽了");
-
-            //Card nextCard = Cards.Last();
-            //Cards.RemoveAt(count-1);
-            //return nextCard;
         }
 
         /// <summary>
@@ -128,20 +112,13 @@ namespace PlayingCardGame
             this.Cards.RemoveRange(0, countOfDeal);
 
             return nextCards;
-
-
-
-            //int count = Cards.Count;
-            //if (count - countOfDeal < 0) throw new Exception("Deck中的牌不足");
-
-            //Card[] nextCards = new Card[countOfDeal];
-            //Cards.CopyTo(count - countOfDeal, nextCards, 0, countOfDeal);
-
-            //Cards.RemoveRange(count - countOfDeal, countOfDeal);
-
-            //return nextCards.ToList();
         }
 
+        /// <summary>
+        /// 向Deck索取下一張牌 若叫用時已被取光 則丟出例外
+        /// </summary>
+        /// <returns></returns>
+        public Card Deal() => Deal(1).Single();
 
 
         // end of Deck
