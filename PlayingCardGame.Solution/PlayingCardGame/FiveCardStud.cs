@@ -6,81 +6,15 @@ using System.Threading.Tasks;
 
 namespace PlayingCardGame
 {
-    public class FiveCardStud
+    public static class FiveCardStud
     {
-        private List<Card> _hand = new List<Card>();
-
-        /// <summary>
-        /// 玩家的手牌情況
-        /// </summary>
-        public Card[] Hand
-        {
-            get { return _hand.ToArray(); }
-        }
-
-        /// <summary>
-        /// 發一張牌到玩家的手牌中
-        /// </summary>
-        /// <param name="addend"></param>
-        /// <returns>發牌後 玩家的手牌情況</returns>
-        /// <exception cref="Exception"></exception>
-        public Card[] AddToHand(Card addend)
-        {
-            if (_hand.Count + 1 > 5)
-            {
-                throw new Exception("手牌最多只能有5張");
-            }
-            if (_hand.Contains(addend))
-            {
-                throw new Exception("手牌內不可有完全相同的牌");
-            }
-
-            _hand.Add(addend);
-
-            return _hand.ToArray();
-        }
-
-
-        /// <summary>
-        /// 判斷兩副手牌中的牌是否相同 只比較其值 不管順序
-        /// </summary>
-        /// <param name="obj"></param>
-        /// <returns></returns>
-        public override bool Equals(object obj)
-        {
-            if (this == null && obj == null) return true;
-            if (this == null || obj == null) return false;
-
-            FiveCardStud objAsStud = obj as FiveCardStud;
-            if (objAsStud == null) return false;
-            else return (this.Hand.Count() == objAsStud.Hand.Count()
-                         && this.Hand.All(objAsStud.Hand.Contains));
-        }
-
-        public override string ToString()
-        {
-            string result = String.Empty;
-
-            foreach (Card card in Hand)
-            {
-                result += card.ToString() + " ";
-            }
-
-            return result;
-        }
-
-        public override int GetHashCode()
-        {
-            return Hand.GetHashCode();
-        }
-
 
 
         /// <summary>
         /// 判斷玩家的手牌 是否為同花大順(10JQKA)
         /// </summary>
         /// <returns></returns>
-        public bool IsRoyalFlush(Card[] Hand)
+        public static bool IsRoyalFlush(Card[] Hand)
         {
             if (Hand.Count() != 5) return false;
 
@@ -97,7 +31,7 @@ namespace PlayingCardGame
         /// 判斷玩家的手牌 是否為同花順
         /// </summary>
         /// <returns></returns>
-        public bool IsStraightFlush(Card[] Hand)
+        public static bool IsStraightFlush(Card[] Hand)
         {
             if ( IsRoyalFlush(Hand) ) return false;
             if (Hand.Count() != 5) return false;
@@ -115,7 +49,7 @@ namespace PlayingCardGame
         /// 判斷玩家的手牌 是否為四條
         /// </summary>
         /// <returns></returns>
-        public bool IsFourOfAKind(Card[] Hand)
+        public static bool IsFourOfAKind(Card[] Hand)
         {
             if (Hand.Count() != 5) return false;
 
@@ -137,7 +71,7 @@ namespace PlayingCardGame
         /// 判斷玩家的手牌 是否為葫蘆
         /// </summary>
         /// <returns></returns>
-        public bool IsFullHouse(Card[] Hand)
+        public static bool IsFullHouse(Card[] Hand)
         {
             if (Hand.Count() != 5) return false;
 
@@ -159,7 +93,7 @@ namespace PlayingCardGame
         /// 判斷玩家的手牌 是否為同花
         /// </summary>
         /// <returns></returns>
-        public bool IsFlush(Card[] Hand)
+        public static bool IsFlush(Card[] Hand)
         {
             if ( Hand.Are5StraightCards() ) return false;
             if (Hand.Count() != 5) return false;
@@ -174,7 +108,7 @@ namespace PlayingCardGame
         /// 判斷玩家的手牌 是否為順子
         /// </summary>
         /// <returns></returns>
-        public bool IsStraight(Card[] Hand)
+        public static bool IsStraight(Card[] Hand)
         {
             bool flush = Hand.Select(c => c.Suit).Distinct().Count() == 1;
             if (flush) return false;
@@ -187,7 +121,7 @@ namespace PlayingCardGame
         /// 判斷玩家的手牌 是否為三條
         /// </summary>
         /// <returns></returns>
-        public bool IsThreeOfAKind(Card[] Hand)
+        public static bool IsThreeOfAKind(Card[] Hand)
         {
             if (Hand.Count() != 5) return false;
 
@@ -209,7 +143,7 @@ namespace PlayingCardGame
         /// 判斷玩家的手牌 是否為兩對
         /// </summary>
         /// <returns></returns>
-        public bool IsTwoPair(Card[] Hand)
+        public static bool IsTwoPair(Card[] Hand)
         {
             if (Hand.Count() != 5) return false;
 
@@ -231,7 +165,7 @@ namespace PlayingCardGame
         /// 判斷玩家的手牌 是否為一對
         /// </summary>
         /// <returns></returns>
-        public bool IsPair(Card[] Hand)
+        public static bool IsPair(Card[] Hand)
         {
             if (Hand.Count() != 5) return false;
 
@@ -253,7 +187,7 @@ namespace PlayingCardGame
         /// 判斷玩家的手牌 是否為單張
         /// </summary>
         /// <returns></returns>
-        public bool IsHighCard(Card[] Hand)
+        public static bool IsHighCard(Card[] Hand)
         {
             if (Hand.Count() != 5) return false;
 
