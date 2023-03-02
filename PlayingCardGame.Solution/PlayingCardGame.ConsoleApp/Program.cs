@@ -12,21 +12,7 @@ namespace PlayingCardGame.ConsoleApp
     {
         static void Main(string[] args)
         {
-            Player player1;
 
-            Deck deck = new Deck();
-            deck.Shuffle();
-
-            for (int i = 0; i < 10; i++)
-            {
-                player1 = new Player(nameof(player1));
-                deck.Deal(5).ForEach(c => player1.AddToHand(c));
-
-                Console.WriteLine($"{player1.Name}: {player1}");
-                Console.WriteLine($"IsTwoPair: {player1.Hand.IsTwoPair()}");
-                Console.WriteLine();
-            }
-            
 
             Console.ReadLine();
         }

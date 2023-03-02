@@ -60,9 +60,9 @@ namespace PlayingCardGame
         /// </summary>
         /// <param name="player"></param>
         /// <returns></returns>
-        public static bool IsRoyalFlush(this Card[] Hand)
+        public static bool IsRoyalFlush(this FiveCardStud player)
         {
-            return FiveCardStud.IsRoyalFlush(Hand);
+            return player.IsRoyalFlush(player.Hand);
         }
 
         /// <summary>
@@ -70,9 +70,9 @@ namespace PlayingCardGame
         /// </summary>
         /// <param name="player"></param>
         /// <returns></returns>
-        public static bool IsStraightFlush(this Card[] Hand)
+        public static bool IsStraightFlush(this FiveCardStud player)
         {
-            return FiveCardStud.IsStraightFlush(Hand);
+            return player.IsStraightFlush(player.Hand);
         }
 
         /// <summary>
@@ -80,9 +80,9 @@ namespace PlayingCardGame
         /// </summary>
         /// <param name="player"></param>
         /// <returns></returns>
-        public static bool IsFourOfAKind(this Card[] Hand)
+        public static bool IsFourOfAKind(this FiveCardStud player)
         {
-            return FiveCardStud.IsFourOfAKind(Hand);
+            return player.IsFourOfAKind(player.Hand);
         }
 
         /// <summary>
@@ -90,9 +90,9 @@ namespace PlayingCardGame
         /// </summary>
         /// <param name="player"></param>
         /// <returns></returns>
-        public static bool IsFullHouse(this Card[] Hand)
+        public static bool IsFullHouse(this FiveCardStud player)
         {
-            return FiveCardStud.IsFullHouse(Hand);
+            return player.IsFullHouse(player.Hand);
         }
 
         /// <summary>
@@ -100,9 +100,9 @@ namespace PlayingCardGame
         /// </summary>
         /// <param name="player"></param>
         /// <returns></returns>
-        public static bool IsFlush(this Card[] Hand)
+        public static bool IsFlush(this FiveCardStud player)
         {
-            return FiveCardStud.IsFlush(Hand);
+            return player.IsFlush(player.Hand);
         }
 
         /// <summary>
@@ -110,9 +110,9 @@ namespace PlayingCardGame
         /// </summary>
         /// <param name="player"></param>
         /// <returns></returns>
-        public static bool IsStraight(this Card[] Hand)
+        public static bool IsStraight(this FiveCardStud player)
         {
-            return FiveCardStud.IsStraight(Hand);
+            return player.IsStraight(player.Hand);
         }
 
         /// <summary>
@@ -120,9 +120,9 @@ namespace PlayingCardGame
         /// </summary>
         /// <param name="player"></param>
         /// <returns></returns>
-        public static bool IsThreeOfAKind(this Card[] Hand)
+        public static bool IsThreeOfAKind(this FiveCardStud player)
         {
-            return FiveCardStud.IsThreeOfAKind(Hand);
+            return player.IsThreeOfAKind(player.Hand);
         }
 
         /// <summary>
@@ -130,9 +130,9 @@ namespace PlayingCardGame
         /// </summary>
         /// <param name="player"></param>
         /// <returns></returns>
-        public static bool IsTwoPair(this Card[] Hand)
+        public static bool IsTwoPair(this FiveCardStud player)
         {
-            return FiveCardStud.IsTwoPair(Hand);
+            return player.IsTwoPair(player.Hand);
         }
 
         /// <summary>
@@ -140,9 +140,9 @@ namespace PlayingCardGame
         /// </summary>
         /// <param name="player"></param>
         /// <returns></returns>
-        public static bool IsPair(this Card[] Hand)
+        public static bool IsPair(this FiveCardStud player)
         {
-            return FiveCardStud.IsPair(Hand);
+            return player.IsPair(player.Hand);
         }
 
         /// <summary>
@@ -150,9 +150,9 @@ namespace PlayingCardGame
         /// </summary>
         /// <param name="player"></param>
         /// <returns></returns>
-        public static bool IsHighCard(this Card[] Hand)
+        public static bool IsHighCard(this FiveCardStud player)
         {
-            return FiveCardStud.IsHighCard(Hand);
+            return player.IsHighCard(player.Hand);
         }
     }
 }

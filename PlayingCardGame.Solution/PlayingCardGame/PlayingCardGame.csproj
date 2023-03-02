@@ -46,7 +46,6 @@
     <Compile Include="Deck.cs" />
     <Compile Include="Extensions.cs" />
     <Compile Include="FiveCardStud.cs" />
-    <Compile Include="Player.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Suits.cs" />
   </ItemGroup>
